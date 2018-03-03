@@ -53,7 +53,7 @@ The output you see will depend a lot on your computer, operating system, and var
 
 As you can see, not all the π symbols were rendered. The OS looks in the current font (I'm trying out [Fira Code](https://github.com/tonsky/FiraCode)) for the Unicode characters `U+3c0`, `U+213c`, `U+1d6d1`, `U+1d70b`, `U+1d745`, `U+1d77f`, and `U+1d7b9`. For each one it fails to find, it searches through other activated fonts looking for one that has a symbol at that code point. The OS doesn't check to see whether the symbol it finds is suitable.
 
-In the example above, the Greek π at `U+3c0` was already available in Fira Code. `\mitpi` (the maths italic π at `U+1d70b`) was eventually found in Microsoft's Segoe UI Symbol, so that font was used for that one character. For `bbpi`, the double-struck or blackboard π, the font Code2000 yielded a symbol at `U+213c` which was duly used, although to me it looks more like a backwards single-struck epsilon than any sort of π. The others weren't found in any active font, so they've been displayed using a question mark in a box.
+In the example above, the Greek π at `U+3c0` was already available in Fira Code. `\mitpi` (the maths italic π at `U+1d70b`) was eventually found in Microsoft's Segoe UI Symbol, so that font was used for that one character. For `\bbpi`, the double-struck or blackboard π, the font Code2000 yielded a symbol at `U+213c` which was duly used, although to me it looks more like a backwards single-struck epsilon than any sort of π. The others weren't found in any active font, so they've been displayed using a question mark in a box.
 
 Now, if I activate a font such as [Asana-Math](https://en.wikipedia.org/wiki/Asana-Math), [Everson Mono](http://evertype.com/emono/), or [STIX](http://stixfonts.org/), or some other mathematically-endowed font, the OS will immediately start to find matches and update the display, constantly switching between fonts as necessary to satisfy demands for Unicode code points:
 
@@ -130,7 +130,7 @@ You probably won't have to manually remove oddments like Bodoni Ornaments or Top
 
 It would be better if I manually curated the candidates rather than used this automatically-generated font list: there are way too many "default" designs from various system and language-specific fonts that simply fill the slot with a basic design, rather than interpret the shape according to the font's theme. And the font list produced by `fontconfig` doesn't look in all the font libraries, so it's an incomplete list.
 
-Here are a few of the more interesting sesigns: the portly Cooper Black and Tiffany Heavy, the minimalist Verdana and Tahoma (looking almost like "n"s?), the eccentric Gill "Kayo" Sans, and the silly Chalkduster.
+Here are a few of the more interesting designs: the portly Cooper Black and Tiffany Heavy, the minimalist Verdana and Tahoma (looking almost like "n"s?), the eccentric Gill "Kayo" Sans, and the silly Chalkduster.
 
 ![piversity](images/piversity.png)
 
