@@ -24,8 +24,10 @@ But although Jones was one of the first, he wasn't influential enough to inspire
 
 Julia embraces the Unicode standard [enthusiastically](https://docs.julialang.org/en/latest/manual/unicode-input/), so it's very easy to use the appropriate Greek (and other Unicode) letters in your code. In the REPL, for example, type `\pi TAB` to insert the Unicode character `U+03C0`:
 
-    julia> π
-    π = 3.1415926535897...
+{% highlight julia %}
+julia> π
+π = 3.1415926535897...
+{% endhighlight %}
 
 and you can use it freely in expressions:
 
@@ -76,9 +78,9 @@ Some tedious experimentation suggests that the search is to some extent alphabet
 By the way, these alternative symbols for π such as `\mitpi` don't evaluate as 3.14..., so you can use them—as William Jones did—as general purpose symbols. For example, if you work with prime numbers you could use one of them to indicate the [prime-counting function](https://en.wikipedia.org/wiki/Prime-counting_function). Or you could just confuse yourself with the following:
 
 {% highlight julia %}
-    julia> 𝜋 = 3
-    julia> 2𝜋
-    6
+julia> 𝜋 = 3
+julia> 2𝜋
+6
 {% endhighlight %}
 
 ### The publisher symbol Ⓟ
@@ -93,46 +95,46 @@ Can we use Julia to find all the different designs of π? My first attempt at th
 
 {% highlight julia %}
 
-    using Fontconfig, Luxor
+using Fontconfig, Luxor
 
-    function buildfontlist()
-        fonts = []
-        for font in Fontconfig.list()
-            families = Fontconfig.format(font, "%{family}")
-            for family in split(families, ",")
-                push!(fonts, family)
+function buildfontlist()
+    fonts = []
+    for font in Fontconfig.list()
+        families = Fontconfig.format(font, "%{family}")
+        for family in split(families, ",")
+            push!(fonts, family)
+        end
+    end
+    filter!(f -> !ismatch(r".LastResort|Agenda|Topaz|Bodoni Ornaments|System",
+        f), fonts)
+    return sort(unique(fonts))
+end
+
+function tabulatepi()
+    fonts = buildfontlist()
+    ncols = 25
+    nrows = convert(Int, ceil(length(fonts))) ÷ ncols
+    @svg begin
+        background("ivory")
+        setopacity(1)
+        t = Table(nrows, ncols, 30, 25)
+        sethue("black")
+        cellnumber = 1
+        for n in 1:length(fonts)
+            fontface(fonts[n])
+            te = textextents("π")
+            if te[3] > 0.0
+                fontsize(18)
+                text("π", t[cellnumber], halign=:center)
+                setfont("Lucida-Sans", 3)
+                settext(fonts[n], t[cellnumber] + (0, isodd(cellnumber) ? 6 : 10), halign="center")
+                cellnumber += 1
             end
         end
-        filter!(f -> !ismatch(r".LastResort|Agenda|Topaz|Bodoni Ornaments|System",
-            f), fonts)
-        return sort(unique(fonts))
-    end
+    end 800 1200
+end
 
-    function tabulatepi()
-        fonts = buildfontlist()
-        ncols = 25
-        nrows = convert(Int, ceil(length(fonts))) ÷ ncols
-        @svg begin
-            background("ivory")
-            setopacity(1)
-            t = Table(nrows, ncols, 30, 25)
-            sethue("black")
-            cellnumber = 1
-            for n in 1:length(fonts)
-                fontface(fonts[n])
-                te = textextents("π")
-                if te[3] > 0.0
-                    fontsize(18)
-                    text("π", t[cellnumber], halign=:center)
-                    setfont("Lucida-Sans", 3)
-                    settext(fonts[n], t[cellnumber] + (0, isodd(cellnumber) ? 6 : 10), halign="center")
-                    cellnumber += 1
-                end
-            end
-        end 800 1200
-    end
-
-    tabulatepi()
+tabulatepi()
 {% endhighlight %}
 
 You probably won't have to manually remove oddments like Bodoni Ornaments or Topaz from the font list as I had to...
@@ -154,37 +156,35 @@ I like the small version from Dalliance; it's nicely old-school, where "old-scho
 It occurred to me to ask "what is the average of π?", or "what would it look like if all the πs were displayed at the same time?". Using the same font list generation as before, I ran this:
 
 {% highlight julia %}
-
-    function textstroke(s, pos, action)
-        @layer begin
-            translate(pos)
-            te = textextents(s)
-            move(-te[3]/2, te[4]/2)
-            textpath(s)
-            tp = pathtopoly()
-            poly.(tp, action, close=true)
-        end
+function textstroke(s, pos, action)
+    @layer begin
+        translate(pos)
+        te = textextents(s)
+        move(-te[3]/2, te[4]/2)
+        textpath(s)
+        tp = pathtopoly()
+        poly.(tp, action, close=true)
     end
+end
 
-    function accumulatepi()
-        fonts = buildfontlist()
-        @png begin
-            background("midnightblue")
-            sethue("lightgoldenrod2")
-            setline(0.2)
-            fontsize(560)
-            setopacity(0.3)
-            for n in 1:length(fonts)
-                fontface(fonts[n])
-                te = textextents("π")
-                if te[3] > 0.0
-                    textstroke("π", O, :stroke)
-                end
+function accumulatepi()
+    fonts = buildfontlist()
+    @png begin
+        background("midnightblue")
+        sethue("lightgoldenrod2")
+        setline(0.2)
+        fontsize(560)
+        setopacity(0.3)
+        for n in 1:length(fonts)
+            fontface(fonts[n])
+            te = textextents("π")
+            if te[3] > 0.0
+                textstroke("π", O, :stroke)
             end
         end
     end
-    accumulatepi()
-
+end
+accumulatepi()
 {% endhighlight %}
 
 ![accumulating pi](/images/pi/accumulate-pi.png)
