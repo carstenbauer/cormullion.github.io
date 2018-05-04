@@ -31,29 +31,35 @@ julia> π
 
 and you can use it freely in expressions:
 
-    @test kepler_solver.([π/4, π/6, 8π/3], 0) ≈ [π/4, π/6, 2π/3]
+{% highlight julia %}
+@test kepler_solver.([π/4, π/6, 8π/3], 0) ≈ [π/4, π/6, 2π/3]
+{% endhighlight %}
 
-(although `pi` will still work, if you'd prefer). In Julia, π and other mathematical constants such as Euler's ℯ (2.7182818284590) currently live in the `Base.MathConstants` module.
+(although `pi` will still work, if you'd prefer). In Julia, π and other mathematical constants such as Euler's `ℯ` (2.7182818284590) currently live in the `Base.MathConstants` module.
 
 As always in Julia, you can usually see how the magic is performed:
 
-    julia> Base.REPLCompletions.latex_symbols["\\pi"]
-    "π"
+{% highlight julia %}
+julia> Base.REPLCompletions.latex_symbols["\\pi"]
+"π"
+{% endhighlight %}
 
 ### More π
 
 We usually use the `U+03C0` π from the Unicode block for Greek and Coptic text glyphs (Coptic was the Greek-based language adopted by the Egyptians to replace hieroglyphs), but there are other π symbols intended mainly for mathematical use. The following snippet of Julia code tries to show all the lower-case Unicode π symbols:
 
-    morepi = [
-    (0x3c0,    "\\pi",           "GREEK SMALL LETTER PI")
-    (0x213c,   "\\bbpi",         "DOUBLE-STRUCK SMALL PI") # v0.7
-    (0x1d6d1,  "\\mbfpi",        "MATHEMATICAL BOLD SMALL PI")
-    (0x1D70B,  "\\mitpi",        "MATHEMATICAL ITALIC SMALL PI")
-    (0x1d745,  "\\mbfitpi",      "MATHEMATICAL BOLD ITALIC SMALL PI")
-    (0x1d77f,  "\\bsanspi",      "MATHEMATICAL SANS-SERIF BOLD SMALL PI") # v0.7
-    (0x1d7b9,   "\\mbfitsanspi", "MATHEMATICAL SANS-SERIF BOLD ITALIC SMALL PI")];
+{% highlight julia %}
+morepi = [
+(0x3c0,    "\\pi",           "GREEK SMALL LETTER PI")
+(0x213c,   "\\bbpi",         "DOUBLE-STRUCK SMALL PI") # v0.7
+(0x1d6d1,  "\\mbfpi",        "MATHEMATICAL BOLD SMALL PI")
+(0x1D70B,  "\\mitpi",        "MATHEMATICAL ITALIC SMALL PI")
+(0x1d745,  "\\mbfitpi",      "MATHEMATICAL BOLD ITALIC SMALL PI")
+(0x1d77f,  "\\bsanspi",      "MATHEMATICAL SANS-SERIF BOLD SMALL PI") # v0.7
+(0x1d7b9,   "\\mbfitsanspi", "MATHEMATICAL SANS-SERIF BOLD ITALIC SMALL PI")];
 
-    foreach(p -> println(" $(Char(p[1])) U+$(lpad(hex(p[1]), 5, "0")) $(rpad(p[2], 15)) $(p[3])"), morepi)
+foreach(p -> println(" $(Char(p[1])) U+$(lpad(hex(p[1]), 5, "0")) $(rpad(p[2], 15)) $(p[3])"), morepi)
+{% endhighlight %}
 
 The two tab completions commented as `v0.7` have been added for Julia version 0.7.
 
