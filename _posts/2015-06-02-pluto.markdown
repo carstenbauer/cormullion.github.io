@@ -2,7 +2,7 @@
 layout: post
 title:  "Pluto and its two symbols"
 date:   2015-06-20 10:21:28 +0100
-categories: pluto
+categories: blog
 ---
 > This post was written as the New Horizons spacecraft approached Pluto, back in July 2015.
 
@@ -59,7 +59,7 @@ There's no shortage of explanations for the meaning of Pluto's astrological symb
 
   <blockquote>
   it combines the circle (spirit) over the crescent (receptivity) and the cross
-    (matter). This glyph suggests spiritual receptivity to "superworlds](or the
+    (matter). This glyph suggests spiritual receptivity to "superworlds" or the
     superconscious, placed above the physical world. Pluto represents subconscious
     forces, ruling all that is "below the surface". On the up side, Pluto is associated
     with renewal and rebirth. It represents endings and new beginnings, as well as
@@ -80,6 +80,6 @@ The most pleasing versions of both Pluto symbols I've found in my font library a
 
 ![Pluto astrological from Peter Rempel's Astrological font](/images/pluto/pluto-pl-astrological-peter-rempel.png)
 
-I'm not sure whether New Horizons spacecraft, soon to arrive at Pluto, bears either of the Pluto symbols. But, in keeping with the theme of death and the underworld, there's a tiny sample of Clyde Tombaugh's ashes attached to the side:
+I'm not sure whether the New Horizons spacecraft, soon to arrive at Pluto, bears either of the Pluto symbols. But, in keeping with the theme of death and the underworld, there's a tiny sample of Clyde Tombaugh's ashes attached to the side:
 
 ![Clyde's ashes](/images/pluto/nh_Tombaugh_ashes.jpg)

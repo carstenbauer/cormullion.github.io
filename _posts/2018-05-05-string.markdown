@@ -1,0 +1,137 @@
+---
+layout: post
+title: "String logo"
+date: 2018-05-05 00:00:00 +0000
+categories: blog
+---
+
+So Scott asked me on Twitter, why don’t I suggest some ideas for a logo for the JuliaString organization on Github?
+
+![](/images/string/twitter-1.png)
+
+Scott (yes, it’s the infamous Scott P Jones of string-processing fame) also mused on what he’d like to see in a logo: multiple concentric rings of text from all corners of the Unicode table, including Hindi, and a scattering of emojis for seasoning...
+
+![](/images/string/twitter-2.png)
+![](/images/string/twitter-3.png)
+
+Flattery is still acceptable currency in my neck of the woods, so I thought I’d have a go. I know next to nothing about logo design, but I've made a few, and I think I know what I like.
+
+I know that a logo should be a simple, distinctive, graphical construction recognisable at large and small scales, from the side of buildings to small computer icons 64 or 128 pixels across, and that it should preferably communicate well in both black and white and color. It should also be witty, ingenious, and convey the essence of the thing it represents without being over-specific. And it should also be—in a world with literally billions of existing logos—unique and unlike any other.
+
+That’s a tall order, and even the pros don't manage it all the time. Some of the classics are pure genius though.
+
+### How long is a piece of string?
+
+Unfortunately, when I start to thinking about the word "string", it conveys to me just one thing: a piece of string. A long thin strand of fibrous material most likely overlapping itself, and possibly subject to random entanglements that both mathematicians and non-mathematicians like to call knots. So, my first thought was that a logo representing string has to look like, well, string.
+
+This should be straightforward enough: I’ll photograph some string, enhance the image, put it inside a box. Job done!
+
+
+Oh, perhaps I’ll add some Julian colors. That didn’t take long.
+
+But the result isn’t very satisfying, and it’s surely to be expected that we show a bit of geometric enthusiasm for the task. Besides, it’s an unwritten rule that I’ve got to use Julia code for things like this by way of testing the usability and reliability of code, so let’s start again, with a fresh cup of coffee to hand.
+
+My initial (and sadly so far the only) idea of geometrical string led me to the parametric equations for a three-fold (trefoil) knot, the simplest possible knot:
+
+$$
+\begin{align}
+x &= sin(t) + sin(2t) \\
+y &= cos(t) - cos(2t) \\
+\end{align}
+$$
+
+These can be plotted as a long-ish one-liner. I've used `prettypoly()` rather than `poly()`, to see the individual points.
+
+{% highlight julia %}
+using Luxor
+@svg begin
+    prettypoly([Point(130sin(t) + 90sin(2t),
+                      130cos(t) - 90cos(2t))
+        for t in 0:0.05:2pi], :stroke, close=true)
+end
+{% endhighlight }
+
+![](/images/string/one-liner.png)
+
+And these - in a single line comprehension - can be inserted into an interactive Jupyter notebook cell. This allows me to explore the basic threefold geometry of a small piece of symmetrical string (joined at the ends in a loop).
+
+![](/images/string/strings-interact.gif)
+
+The results are pleasant if a wee bit dull. There’s another problem, though and that is the where the string goes over and under itself, the overlaps and underlaps. These are part of the unique stringy quality of string that we ought to be capturing. Usually when you’re drawing a path in some graphics program you can overlap your earlier traces again and again, but it’s not so easy to go underneath the same path once you’ve already drawn it.
+
+![](/images/string/simple-path-crossing-animation.gif)
+
+Also, typically, a single stroked path can be only a single color, and a single opacity level.
+
+I tried to think of some algorithms to draw overlapping and underlapping paths automatically. For example, as you start to draw a path, remember the location of each line segment, then, when you have to go underneath an earlier segment, make a note of it, then later go back and erase it and redraw it.... Well, I didn’t manage to complete any of these thought algorithms, but I'd love to know if anyone else has.
+
+### Go deeper
+
+It occurred to me that the problem literally required a more in-depth approach. I added z-coordinates to the x and y. The parametric equations are now:
+
+$$
+\begin{align}
+x &= sin(t) + sin(2t) \\
+y &= cos(t) - cos(2t) \\
+z &= -sin(2t) \\
+\end{align}
+$$
+
+A quick modification uses the x and y coordinates as before, and the z coordinate determines the radius of the dots:
+
+{% highlight julia %}
+@svg begin
+    pts = [(130sin(t) + 90sin(2t),
+            130cos(t) - 90cos(2t),
+            -90sin(2t))
+           for t in 0:0.025:2pi]
+
+    for t in pts
+        circle(Point(t[1], t[2]), abs(t[3]/25), :fill)
+    end
+end
+{% end highlight %}
+
+![basic](/images/string/basic-three-d.png)
+
+Familiar to most of use as the Adobe PDF logo:
+
+![Adobe PDF](/images/string/adobe-pdf-logo.png)
+
+And I made a Point3D type to store them. Now with z coordinates ....
+
+I want to be able to look at the string from a defined angle, so I’ll have a Projection type to store things that define a 3d projection, like eye position and view center, and a way of choosing how much perspective foreshortening should be applied. I’m starting to wonder if I’d be better off using GLVisualize, or Makie, where all this 3d stuff probably comes as standard. But, now that I’ve started down this rabbit hole (you probably know that “I’ll just give it 10 more minutes...” feeling?), here’s a function to convert a point3d to a point2ds, and here’s a utility function or two, and eventually there’s a spinning loop of string on the screen.
+
+
+
+Now I can see where the overlaps and underlaps occur, and it should now be easy to drop back to 2 dimensions while preserving the over/underlapping information.
+
+To make three different coloured strands, I split the drawing of the string into three and drew them all “at the same time”. So, for each incoming point, I checked the three z-coordinates, sorted them into order with sortperm, then sorted the colours too, then each was drawn in the correct sequence. In fact 99% of the time it’s not worth doing this - only for those few moments when x/y values are the same does the z value matter. Perhaps I could predict mathematically where those points are? And are there moments when the three strands occupy the same z-coordinate?
+
+### Coloured blends
+
+After trying to draw the three Julia coloured strands separately, I decided to try changing the color continuously along the length of the string. This is possible with the get function from Colorschemes.jl, which lets you sample a set of colors at any point,  not just where the colors occur. I created a Julia colorschemes, which goes from purple,
+
+### Fiddling with the formula
+
+The good thing about Julia and this type of design that the ‘solution space” defined by a few basic graphic ideas can be explored once you have inserted enough parameters. Letting these cycle through at random is one possible strategy, or just stepping through some sequence. Usually the results for this simple level of complexity are generated instantly (although it takes a few seconds to make the animations, which involves creating and joining 100s of individual frames.
+
+### Sine curve sampling vs even spacing...
+
+When you use trig functions to generate curves, you’re often stepping through the angles by a fixed amount. The intermediate points on such a curve have different spacings - wider apart one minute, closer the next. This is usually ok, because the tighter corners at inflection points use more points — it can even look better. But sometimes you want equidistant intermediate points on curves, no matter what the curve is doing.
+
+This is possible with the Luxor function `polyportion()`, which lets you find any point along the polygon’s length: for any polygon, a range of 0.0:0.1:1.0 produces 10 (or possibly 11) equally spaced points along a polygon’s length. With Julia’s speed it doesn’t take long to scan a sine curve and return a new set of equidistant points. This lets us represent curves in a more decorative or controlled way.
+
+Here the string is turning almost into a necklace. Not an unpleasant result here, where the ‘beads’ could carry a suggestions of elements in an ordered sequence, such as characters in a string...
+
+### Asymmetry
+
+There’s always the desire for symmetry and graphical simplicity, but the problem is that by now these are well-travelled paths. We might not have hit Peak Logo, but there are already millions of the things, with more being generated every second, and many of the simple and elegant designs have already been taken. This problem is seen elsewhere, such as product names and URLs... Exploring asymmetry and randomness is a useful technique here, because it immediately relaxes a constraint that has been limiting the possibilities.
+
+Here I think I’ve either found something that I quite like, or I’ve just reached saturation point and can no longer decide if what I’m seeing is what I want.
+
+After all these graphical confections have disappeared from view, with just one left as the final offering, there’s one more job: “postjustification”. This is when the arbitrary graphics are linked back to the required concept, such that all the random choices are explained as being simply inevitable.
+
+In all of us I think there’s a hidden desire that the ‘right solution” has emerged from the sea of infinite random possibilities by the combined forces of its own correctness and our own brilliance. You can see this process at work whenever new branding is introduced... you know the kind of thing...
+
+Web 2.0.
