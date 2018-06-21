@@ -4,4 +4,6 @@ title: About
 permalink: /about/
 ---
 
-Something should go here one day.
+Some of my explorations with Julia the programming language. Complaints or
+similar should be posted as an issue on the [github
+repository](https://github.com/cormullion/cormullion.github.io).
