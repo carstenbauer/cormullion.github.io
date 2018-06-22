@@ -824,7 +824,7 @@ end 800 300 "images/bezier/kabelfonts.png"
 
 # [Photograph by Rudolf Stricker](https://commons.wikimedia.org/wiki/File:Lancia_Kappa_front_20110130.jpg)
 
-#...or to many of the other things called kappa, such as the curvature of the universe, the torsional constant of an oscillator, Einstein's constant of gravitation, the coupling coefficient in magnetostatics—and that's just in physics.)
+# ...or to many of the other things called kappa, such as the curvature of the universe, the torsional constant of an oscillator, Einstein's constant of gravitation, the coupling coefficient in magnetostatics—and that's just in physics.)
 
 function drawcurvature(bezpathsegment::BezierPathSegment;
         scale=500,
