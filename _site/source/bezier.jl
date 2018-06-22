@@ -1,22 +1,22 @@
 #md ---
 #md layout: post
 #md title: "Bezier Moi"
-#md date: 2018-06-07 00:00:00 +0000
+#md date: 2018-06-21 00:00:00 +0000
 #md categories: blog
 #md mathjax: true
 #md ---
 
-# >This post was inspired mostly by the arrival of the new Julia package [Literate.jl](https://github.com/fredrikekre/Literate.jl) by Fredrik Ekre. Literate lets you write a Julia source file, a Markdown blog post, and a Jupyter notebook all at the same time. It's magic, or, at least, indistinguishable from magic... As a result, you might be able to find a Jupyter notebook version of this Markdown-converted Julia source file somewhere nearby (look in the [github repo](https://github.com/cormullion/cormullion.github.io) for this blog, perhaps). The following packages are used: Literate, Luxor, Colors, Roots, Fontconfig, DataFrames, Iterators, ColorSchemes. It should be working in Julia v0.6 (some packages such as Colors have yet to be updated to work with version 0.7.)
+# >This post was inspired mostly by the arrival of the new Julia package [Literate.jl](https://github.com/fredrikekre/Literate.jl) by Fredrik Ekre. Literate lets you write a Julia source file, a Markdown blog post, and a Jupyter notebook all at the same time. It's magic, or, at least, indistinguishable from magic... As a result, you might be able to find a Jupyter notebook version of this Markdown-converted Julia source file somewhere nearby (look in the [github repo](https://github.com/cormullion/cormullion.github.io) for this blog, perhaps). The code uses the following packages, Literate, Luxor, Colors, Roots, Fontconfig, DataFrames, Iterators, ColorSchemes, and should work in Julia v0.6 (some packages such as Colors have yet to be updated to work with version 0.7).
 
 # # Bézier moi!
 
-# Luxor provides some support for Bézier curves, but there's no room for any more documentation—it's already too big. So the intention of this post is to provide some of the missing information about what's up with Bézier curves and how you might use them. And I confess in advance to wasting some of your bandwith with some pointlessly colorful graphics.
+# Luxor provides some support for Bézier curves, but there's no room for any more documentation—it's already too big. So the intention of this post is to provide some of the missing information about what's up with Bézier curves and how you might use them. And I confess in advance to wasting some of your bandwidth with some pointlessly colourful graphics.
 
 # There's not a lot of mathematical material here, but fortunately the internet is *awash* with high-quality information about Bézier curves. The two articles you should definitely read instead of this post, or at least before, are:
 
-# - https://pomax.github.io/bezierinfo/ An exhaustive and exhausting examination of Bézier curves by Mike 'Pomax' Kamermans, Mozilla JavaScript guru, complete with interactive JavaScript graphics.
+# - [https://pomax.github.io/bezierinfo/](https://pomax.github.io/bezierinfo/)  An exhaustive and exhausting examination of Bézier curves by Mike 'Pomax' Kamermans, Mozilla JavaScript guru, complete with interactive JavaScript graphics.
 
-# - http://mae.engr.ucdavis.edu/~farouki/bernstein.pdf A paper exploring the history and mathematics of curves by Professor Rida T. Farouki (University of California Davis).
+# - [http://mae.engr.ucdavis.edu/~farouki/bernstein.pdf](http://mae.engr.ucdavis.edu/~farouki/bernstein.pdf) A paper exploring the history and mathematics of curves by Professor Rida T. Farouki (University of California Davis).
 
 # ## Historical background
 
@@ -26,7 +26,7 @@
 
 # (This is the Citroen DS, which was once voted the most beautiful car ever made, apparently. Image from the WikiMedia Commons photographed by [Klugschnacker](https://commons.wikimedia.org/w/index.php?curid=28638457))
 
-# De Casteljau and Bézier were interested in mathematical tools that would allow designers to intuitively construct and manipulate complex shapes. This problem was especially critical for “free–form” shapes that couldn't easily be specified by center points, axes, angles, and dimensions. The motivation was also partly to replace the laborious, variable, and expensive process of sculpting clay models to specify the desired shape.
+# De Casteljau and Bézier were interested in mathematical tools that would allow designers to intuitively construct and manipulate complex shapes. This problem was especially critical for “free–form” shapes that couldn't easily be specified by centre points, axes, angles, and dimensions. The motivation was also partly to replace the laborious, variable, and expensive process of sculpting clay models to specify the desired shape.
 
 # De Casteljau found some resistance when his mathematical researches were introduced into the design studio. He observed that:
 
@@ -167,7 +167,7 @@ animate(bedtimemovie, [Scene(bedtimemovie, frame, 1:150, easingfunction=easeoutq
 
 # # ![bedtime for Béziers](IMAGEFOLDER/bedtimemovie.gif)
 
-# This is a process known to very young Adobe Illustrator users as "putting the Bézier handles to bed".
+# This is a process known to very young Adobe Illustrator users as ‘putting the Bézier handles to bed’.
 
 # It's also fun to move the control points somewhere else. Here, they're multiplied by 2, while the first and last points are left unchanged:
 
@@ -277,7 +277,7 @@ end 800 300 "images/bezier/bezierfrompoints.png"
 
 # ## Can't draw a circle?
 
-# Having witnessed the ability of a simple Bézier curve to adopt so many shapes, it's a bit surprising to find out that you can't use a Bézier curve to draw a circle. Well, it can do a very good impression of one, of course, but mathematically it can't produce a purely circular curve. You can see this if you draw a *very* large circle and a *very* large matching Bézier segment. For a circle with radius 10 meters (and that's one big PDF), the discrepancy between the pure circle and the Bézier approximation isn't much bigger than the size of this period/full stop.⤺
+# Having witnessed the ability of a simple Bézier curve to adopt so many shapes, it's a bit surprising to find out that you can't use a Bézier curve to draw a circle. Well, it can do a very good impression of one, of course, but mathematically it can't produce a purely circular curve. You can see this if you draw a *very* large circle and a *very* large matching Bézier segment. For a circle with radius 10 meters (and that's one big PDF), the discrepancy between the pure circle and the Bézier approximation isn't much bigger than the size of this period/full stop.←
 
 # We non-scientists are lucky in not having to worry about errors of this magnitude...
 
@@ -340,6 +340,76 @@ radiusofbezier(x) = _radiusofbezier(x) - 1
 
 using Roots
 find_zero(radiusofbezier, (0, 1), verbose=true)
+
+#md Results of univariate zero finding:
+#md * Converged to: 0.5522847498307936
+#md * Algorithm: Roots.Bisection64()
+#md * iterations: 59
+#md * function evaluations: 61
+#md * stopped as |f(x_n)| ≤ max(δ, max(1,|x|)⋅ϵ) using δ = atol, ϵ = rtol
+#md Trace:
+#md x_0 =  0.0000000000000000,   f(x_0) = -0.2928932188134524
+#md x_1 =  0.0000000000000000,   f(x_1) = -0.2928932188134524
+#md x_2 =  0.0000000000000000,   f(x_2) = -0.2928932188134524
+#md x_3 =  0.0000000000000000,   f(x_3) = -0.2928932188134524
+#md x_4 =  0.0000000000000000,   f(x_4) = -0.2928932188134524
+#md x_5 =  0.0000000002401066,   f(x_5) = -0.2928932186861167
+#md x_6 =  0.0000154972076416,   f(x_6) = -0.2928850001779929
+#md x_7 =  0.0039367675781250,   f(x_7) = -0.2908054325256169
+#md x_8 =  0.0627441406250000,   f(x_8) = -0.2596181133267076
+#md x_9 =  0.2504882812500000,   f(x_9) = -0.1600517471037238
+#md x_10 =  0.5004882812500000,  f(x_10) = -0.0274692256312462
+#md x_11 =  0.5004882812500000,  f(x_11) = -0.0274692256312462
+#md x_12 =  0.5004882812500000,  f(x_12) = -0.0274692256312462
+#md x_13 =  0.5004882812500000,  f(x_13) = -0.0274692256312462
+#md x_14 =  0.5317077636718750,  f(x_14) = -0.0109125948370147
+#md x_15 =  0.5473175048828125,  f(x_15) = -0.0026342794398989
+#md x_16 =  0.5473175048828125,  f(x_16) = -0.0026342794398989
+#md x_17 =  0.5512199401855469,  f(x_17) = -0.0005647005906200
+#md x_18 =  0.5512199401855469,  f(x_18) = -0.0005647005906200
+#md x_19 =  0.5521955490112305,  f(x_19) = -0.0000473058783003
+#md x_20 =  0.5521955490112305,  f(x_20) = -0.0000473058783003
+#md x_21 =  0.5521955490112305,  f(x_21) = -0.0000473058783003
+#md x_22 =  0.5521955490112305,  f(x_22) = -0.0000473058783003
+#md x_23 =  0.5522565245628357,  f(x_23) = -0.0000149687087803
+#md x_24 =  0.5522565245628357,  f(x_24) = -0.0000149687087803
+#md x_25 =  0.5522717684507370,  f(x_25) = -0.0000068844164003
+#md x_26 =  0.5522793903946877,  f(x_26) = -0.0000028422702103
+#md x_27 =  0.5522832013666630,  f(x_27) = -0.0000008211971153
+#md x_28 =  0.5522832013666630,  f(x_28) = -0.0000008211971153
+#md x_29 =  0.5522841541096568,  f(x_29) = -0.0000003159288415
+#md x_30 =  0.5522846304811537,  f(x_30) = -0.0000000632947047
+#md x_31 =  0.5522846304811537,  f(x_31) = -0.0000000632947047
+#md x_32 =  0.5522847495740280,  f(x_32) = -0.0000000001361705
+#md x_33 =  0.5522847495740280,  f(x_33) = -0.0000000001361705
+#md x_34 =  0.5522847495740280,  f(x_34) = -0.0000000001361705
+#md x_35 =  0.5522847495740280,  f(x_35) = -0.0000000001361705
+#md x_36 =  0.5522847495740280,  f(x_36) = -0.0000000001361705
+#md x_37 =  0.5522847495740280,  f(x_37) = -0.0000000001361705
+#md x_38 =  0.5522847495740280,  f(x_38) = -0.0000000001361705
+#md x_39 =  0.5522847495740280,  f(x_39) = -0.0000000001361705
+#md x_40 =  0.5522847495740280,  f(x_40) = -0.0000000001361705
+#md x_41 =  0.5522847498066312,  f(x_41) = -0.0000000000128140
+#md x_42 =  0.5522847498066312,  f(x_42) = -0.0000000000128140
+#md x_43 =  0.5522847498066312,  f(x_43) = -0.0000000000128140
+#md x_44 =  0.5522847498066312,  f(x_44) = -0.0000000000128140
+#md x_45 =  0.5522847498211689,  f(x_45) = -0.0000000000051041
+#md x_46 =  0.5522847498284378,  f(x_46) = -0.0000000000012493
+#md x_47 =  0.5522847498284378,  f(x_47) = -0.0000000000012493
+#md x_48 =  0.5522847498302550,  f(x_48) = -0.0000000000002855
+#md x_49 =  0.5522847498302550,  f(x_49) = -0.0000000000002855
+#md x_50 =  0.5522847498307093,  f(x_50) = -0.0000000000000447
+#md x_51 =  0.5522847498307093,  f(x_51) = -0.0000000000000447
+#md x_52 =  0.5522847498307093,  f(x_52) = -0.0000000000000447
+#md x_53 =  0.5522847498307660,  f(x_53) = -0.0000000000000145
+#md x_54 =  0.5522847498307660,  f(x_54) = -0.0000000000000145
+#md x_55 =  0.5522847498307802,  f(x_55) = -0.0000000000000070
+#md x_56 =  0.5522847498307873,  f(x_56) = -0.0000000000000032
+#md x_57 =  0.5522847498307909,  f(x_57) = -0.0000000000000013
+#md x_58 =  0.5522847498307927,  f(x_58) = -0.0000000000000004
+#md x_59 =  0.5522847498307936,  f(x_59) =  0.0000000000000000
+#md 0.5522847498307936
+
 
 # So that's `kappa`.
 
@@ -604,11 +674,50 @@ end
 
 sort!(df, :Total, lt = (a, b) -> abs(a) < abs(b))
 
+#md 1018×5 DataFrames.DataFrame
+#md │ Row  │ Fontname                        │ Outer    │ Inner   │ Total        │ Mean     │
+#md ├──────┼─────────────────────────────────┼──────────┼─────────┼──────────────┼──────────┤
+#md │ 1    │ Kabel LT Std Light              │ 1.0      │ 1.0     │ 0.0          │ 1.0      │
+#md │ 2    │ ITC Avant Garde Std XLt         │ 0.9965   │ 1.0035  │ -2.04211e-7  │ 1.0      │
+#md │ 3    │ Kabel LT Std Black              │ 1.0      │ 1.00101 │ -0.000503525 │ 1.0005   │
+#md │ 4    │ Gill Sans                       │ 0.972742 │ 1.02949 │ -0.00111546  │ 1.00112  │
+#md │ 5    │ Gill Sans MT Pro Medium         │ 0.972742 │ 1.02949 │ -0.00111546  │ 1.00112  │
+#md │ 6    │ ITC Avant Garde Gothic Std      │ 0.993158 │ 1.01428 │ -0.00371842  │ 1.00372  │
+#md │ 7    │ ITC Avant Garde Std Bk          │ 0.993158 │ 1.01428 │ -0.00371842  │ 1.00372  │
+#md │ 8    │ ITC Avant Garde Std Md          │ 0.991246 │ 1.021   │ -0.00612158  │ 1.00612  │
+#md │ 9    │ Avenir Heavy                    │ 0.965208 │ 1.02078 │ 0.00700837   │ 0.992992 │
+#md ⋮
+#md │ 1009 │ Akzidenz-Grotesk BQ Condensed A │ 2.30537  │ 5.19277 │ -2.74907     │ 3.74907  │
+#md │ 1010 │ AmplitudeComp-Ultra             │ 1.52721  │ 6.41949 │ -2.97335     │ 3.97335  │
+#md │ 1011 │ Industria LT Std Solid          │ 2.62973  │ 5.72823 │ -3.17898     │ 4.17898  │
+#md │ 1012 │ Bernard MT Condensed            │ 1.5877   │ 7.55733 │ -3.57252     │ 4.57252  │
+#md │ 1013 │ Impact                          │ 1.4851   │ 7.6678  │ -3.57645     │ 4.57645  │
+#md │ 1014 │ HeadLineA                       │ 1.6      │ 8.34783 │ -3.97391     │ 4.97391  │
+#md │ 1015 │ Univers LT Std 39 Thin UltraCn  │ 3.69307  │ 6.81657 │ -4.25482     │ 5.25482  │
+#md │ 1016 │ Helvetica LT Std ExtCompressed  │ 1.9595   │ 8.82251 │ -4.39101     │ 5.39101  │
+#md │ 1017 │ Gill Sans MT Pro Bold ExtCond   │ 2.70499  │ 9.1913  │ -4.94815     │ 5.94815  │
+#md │ 1018 │ Helvetica LT Std UltCompressed  │ 2.46103  │ 9.71489 │ -5.08796     │ 6.08796  │
+
 # Few typefaces are perfectly circular. Even [Circular](http://typographica.org/typeface-reviews/ll-circular/), LineTo's trendy geometric sans typeface, isn't perfectly circular.
 
 # Most of the least circular ones, according to this rough examination, are in the Condensed and Compressed sections of the font libraries. No surprise, Sherlock.
 
 display(df[end-10:end, :])
+
+#md 11×5 DataFrames.DataFrame
+#md │ Row │ Fontname                        │ Outer   │ Inner   │ Total    │ Mean    │
+#md ├─────┼─────────────────────────────────┼─────────┼─────────┼──────────┼─────────┤
+#md │ 1   │ Helvetica LT Std Compressed     │ 5.72485 │ 1.53453 │ -2.62969 │ 3.62969 │
+#md │ 2   │ Akzidenz-Grotesk BQ Condensed A │ 2.30537 │ 5.19277 │ -2.74907 │ 3.74907 │
+#md │ 3   │ AmplitudeComp-Ultra             │ 1.52721 │ 6.41949 │ -2.97335 │ 3.97335 │
+#md │ 4   │ Industria LT Std Solid          │ 2.62973 │ 5.72823 │ -3.17898 │ 4.17898 │
+#md │ 5   │ Bernard MT Condensed            │ 1.5877  │ 7.55733 │ -3.57252 │ 4.57252 │
+#md │ 6   │ Impact                          │ 1.4851  │ 7.6678  │ -3.57645 │ 4.57645 │
+#md │ 7   │ HeadLineA                       │ 1.6     │ 8.34783 │ -3.97391 │ 4.97391 │
+#md │ 8   │ Univers LT Std 39 Thin UltraCn  │ 3.69307 │ 6.81657 │ -4.25482 │ 5.25482 │
+#md │ 9   │ Helvetica LT Std ExtCompressed  │ 1.9595  │ 8.82251 │ -4.39101 │ 5.39101 │
+#md │ 10  │ Gill Sans MT Pro Bold ExtCond   │ 2.70499 │ 9.1913  │ -4.94815 │ 5.94815 │
+#md │ 11  │ Helvetica LT Std UltCompressed  │ 2.46103 │ 9.71489 │ -5.08796 │ 6.08796 │
 
 t = Table(2, 5, 170, 140)
 @png begin
@@ -627,6 +736,20 @@ end 800 250 "images/bezier/leastcircularfonts.png"
 
 display(df[1:10, :])
 
+#md 10×5 DataFrames.DataFrame
+#md │ Row │ Fontname                   │ Outer    │ Inner   │ Total        │ Mean     │
+#md ├─────┼────────────────────────────┼──────────┼─────────┼──────────────┼──────────┤
+#md │ 1   │ Kabel LT Std Light         │ 1.0      │ 1.0     │ 0.0          │ 1.0      │
+#md │ 2   │ ITC Avant Garde Std XLt    │ 0.9965   │ 1.0035  │ -2.04211e-7  │ 1.0      │
+#md │ 3   │ Kabel LT Std Black         │ 1.0      │ 1.00101 │ -0.000503525 │ 1.0005   │
+#md │ 4   │ Gill Sans                  │ 0.972742 │ 1.02949 │ -0.00111546  │ 1.00112  │
+#md │ 5   │ Gill Sans MT Pro Medium    │ 0.972742 │ 1.02949 │ -0.00111546  │ 1.00112  │
+#md │ 6   │ ITC Avant Garde Gothic Std │ 0.993158 │ 1.01428 │ -0.00371842  │ 1.00372  │
+#md │ 7   │ ITC Avant Garde Std Bk     │ 0.993158 │ 1.01428 │ -0.00371842  │ 1.00372  │
+#md │ 8   │ ITC Avant Garde Std Md     │ 0.991246 │ 1.021   │ -0.00612158  │ 1.00612  │
+#md │ 9   │ Avenir Heavy               │ 0.965208 │ 1.02078 │ 0.00700837   │ 0.992992 │
+#md │ 10  │ DIN 30640 Std              │ 0.966066 │ 1.01366 │ 0.010139     │ 0.989861 │
+
 t = Table(2, 5, 160, 140)
 @png begin
     for (n, f) in enumerate(df[1:10, 1])
@@ -643,6 +766,19 @@ end 800 300 "images/bezier/mostcircularfonts.png"
 # In the ‘most circular o’ fonts, there are a few examples from Rudolf Koch's Kabel family.
 
 kabel = df[[contains(fontname, r".*Kabel.*") for fontname in df[:Fontname]], :]
+
+#md 9×5 DataFrames.DataFrame
+#md │ Row │ Fontname             │ Outer    │ Inner   │ Total        │ Mean     │
+#md ├─────┼──────────────────────┼──────────┼─────────┼──────────────┼──────────┤
+#md │ 1   │ Kabel LT Std Light   │ 1.0      │ 1.0     │ 0.0          │ 1.0      │
+#md │ 2   │ Kabel LT Std Black   │ 1.0      │ 1.00101 │ -0.000503525 │ 1.0005   │
+#md │ 3   │ ITC Kabel Std Medium │ 0.976604 │ 0.99728 │ 0.0130582    │ 0.986942 │
+#md │ 4   │ Kabel LT Std         │ 1.02945  │ 1.0     │ -0.014727    │ 1.01473  │
+#md │ 5   │ Kabel LT Std Book    │ 1.02945  │ 1.0     │ -0.014727    │ 1.01473  │
+#md │ 6   │ ITC Kabel Std Ultra  │ 0.961288 │ 1.07731 │ -0.0193006   │ 1.0193   │
+#md │ 7   │ ITC Kabel Std        │ 1.02357  │ 1.02993 │ -0.0267482   │ 1.02675  │
+#md │ 8   │ ITC Kabel Std Book   │ 1.02357  │ 1.02993 │ -0.0267482   │ 1.02675  │
+#md │ 9   │ ITCKabel             │ 1.02357  │ 1.02993 │ -0.0267482   │ 1.02675  │
 
 ## that's v0.6 syntax... v0.7 is df[[occursin(r".*Kabel.*", fname) for fname  in df[:Name]], :]
 
@@ -682,11 +818,13 @@ end 800 300 "images/bezier/kabelfonts.png"
 
 #  The following `drawcurvature()` function uses the kappa value to work out the slope, and draw a perpendicular to the curve, with lengths varying according to the value of kappa, indicating the way the curvature changes.
 
+# (This is another *kappa*, by the way, no relation to the Bézier circularity kappa. Or indeed to the Lancia Kappa...
+
 # # ![Lancia Kappa from Wikimedia Commons](IMAGEFOLDER/2880px-Lancia_Kappa_front_20110130.jpg)
 
 # [Photograph by Rudolf Stricker](https://commons.wikimedia.org/wiki/File:Lancia_Kappa_front_20110130.jpg)
 
-# (This is another *kappa*, by the way, no relation to the Bézier circularity kappa. Or indeed to the Lancia Kappa, or to many of the other things called kappa, such as the curvature of the universe, the torsional constant of an oscillator, Einstein's constant of gravitation, the coupling coefficient in magnetostatics—and that's just in physics.)
+#...or to many of the other things called kappa, such as the curvature of the universe, the torsional constant of an oscillator, Einstein's constant of gravitation, the coupling coefficient in magnetostatics—and that's just in physics.)
 
 function drawcurvature(bezpathsegment::BezierPathSegment;
         scale=500,
@@ -1164,8 +1302,12 @@ function setimagefolder(content)                                                
     content = replace(content, "IMAGEFOLDER" => "$IMAGEFOLDER")                      #src
     return content                                                                   #src
 end                                                                                  #src
+# for Jupyter notebook, put images in subfolder                                      #src
 IMAGEFOLDER = "images/bezier"                                                        #src
 Literate.notebook("source/bezier.jl", "notebooks", preprocess = setimagefolder)      #src
+# for Markdown/Jekyll notebook, put images in "/images"                              #src
 IMAGEFOLDER = "/images/bezier"                                                       #src
 Literate.markdown("source/bezier.jl", ".", name="_posts/2018-06-20-bezier.markdown", #src
- preprocess = setimagefolder, documenter=false)                                      #src
+ preprocess = setimagefolder,                                                        #src
+ codefence = "{% highlight julia %}" => "{% endhighlight julia %}",                  #src
+ documenter=false)                                                                   #src

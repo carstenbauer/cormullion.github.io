@@ -6,7 +6,7 @@ categories: blog
 mathjax: true
 ---
 
->This post was inspired mostly by the arrival of the new Julia package [Literate.jl](https://github.com/fredrikekre/Literate.jl) by Fredrik Ekre. Literate lets you write a Julia source file, a Markdown blog post, and a Jupyter notebook all at the same time. It's magic, or, at least, indistinguishable from magic... As a result, you might be able to find a Jupyter notebook version of this Markdown-converted Julia source file somewhere nearby (look in the [github repo](https://github.com/cormullion/cormullion.github.io) for this blog, perhaps). The code uses the following packages, Literate, Luxor, Colors, Roots, Fontconfig, DataFrames, Iterators, ColorSchemes, and should work in Julia v0.6 (some packages such as Colors have yet to be updated to work with version 0.7.)
+>This post was inspired mostly by the arrival of the new Julia package [Literate.jl](https://github.com/fredrikekre/Literate.jl) by Fredrik Ekre. Literate lets you write a Julia source file, a Markdown blog post, and a Jupyter notebook all at the same time. It's magic, or, at least, indistinguishable from magic... As a result, you might be able to find a Jupyter notebook version of this Markdown-converted Julia source file somewhere nearby (look in the [github repo](https://github.com/cormullion/cormullion.github.io) for this blog, perhaps). The code uses the following packages, Literate, Luxor, Colors, Roots, Fontconfig, DataFrames, Iterators, ColorSchemes, and should work in Julia v0.6 (some packages such as Colors have yet to be updated to work with version 0.7).
 
 # Bézier moi!
 
@@ -14,7 +14,7 @@ Luxor provides some support for Bézier curves, but there's no room for any more
 
 There's not a lot of mathematical material here, but fortunately the internet is *awash* with high-quality information about Bézier curves. The two articles you should definitely read instead of this post, or at least before, are:
 
-- [https://pomax.github.io/bezierinfo/](https://pomax.github.io/bezierinfo/) An exhaustive and exhausting examination of Bézier curves by Mike 'Pomax' Kamermans, Mozilla JavaScript guru, complete with interactive JavaScript graphics.
+- [https://pomax.github.io/bezierinfo/](https://pomax.github.io/bezierinfo/)  An exhaustive and exhausting examination of Bézier curves by Mike 'Pomax' Kamermans, Mozilla JavaScript guru, complete with interactive JavaScript graphics.
 
 - [http://mae.engr.ucdavis.edu/~farouki/bernstein.pdf](http://mae.engr.ucdavis.edu/~farouki/bernstein.pdf) A paper exploring the history and mathematics of curves by Professor Rida T. Farouki (University of California Davis).
 
@@ -172,10 +172,7 @@ width, height = (256, 256)
 
 bedtimemovie = Movie(width, height, "bedtimemovie")
 # probably requires ffmpeg installed
-animate(bedtimemovie,
-  [Scene(bedtimemovie, frame, 1:150, easingfunction=easeoutquad)],
-  creategif=true, framerate=30,
-  pathname="images/bezier/bedtimemovie.gif")
+animate(bedtimemovie, [Scene(bedtimemovie, frame, 1:150, easingfunction=easeoutquad)], creategif=true, framerate=30, pathname="images/bezier/bedtimemovie.gif")
 {% endhighlight julia %}
 
 # ![bedtime for Béziers](/images/bezier/bedtimemovie.gif)
@@ -366,17 +363,13 @@ And we'll use one of the many excellent packages in [JuliaMath](https://github.c
 {% highlight julia %}
 using Roots
 find_zero(radiusofbezier, (0, 1), verbose=true)
-{% endhighlight julia %}
 
-{% highlight julia %}
 Results of univariate zero finding:
-
 * Converged to: 0.5522847498307936
 * Algorithm: Roots.Bisection64()
 * iterations: 59
 * function evaluations: 61
 * stopped as |f(x_n)| ≤ max(δ, max(1,|x|)⋅ϵ) using δ = atol, ϵ = rtol
-
 Trace:
 x_0 =  0.0000000000000000,   f(x_0) = -0.2928932188134524
 x_1 =  0.0000000000000000,   f(x_1) = -0.2928932188134524
@@ -438,7 +431,6 @@ x_56 =  0.5522847498307873,  f(x_56) = -0.0000000000000032
 x_57 =  0.5522847498307909,  f(x_57) = -0.0000000000000013
 x_58 =  0.5522847498307927,  f(x_58) = -0.0000000000000004
 x_59 =  0.5522847498307936,  f(x_59) =  0.0000000000000000
-
 0.5522847498307936
 {% endhighlight julia %}
 
@@ -671,8 +663,7 @@ end
 
 scores = Score[]
 
-# we have to have a drawing open, otherwise
-# textpath() doesn't know where to turn
+# we have to have a drawing open, otherwise textpath() doesn't know where to turn
 
 Drawing(100, 100, "/tmp/emptydrawing.png")
 fontlist = unique(buildfontlist())
@@ -716,6 +707,30 @@ for f in scores
 end
 
 sort!(df, :Total, lt = (a, b) -> abs(a) < abs(b))
+
+1018×5 DataFrames.DataFrame
+│ Row  │ Fontname                        │ Outer    │ Inner   │ Total        │ Mean     │
+├──────┼─────────────────────────────────┼──────────┼─────────┼──────────────┼──────────┤
+│ 1    │ Kabel LT Std Light              │ 1.0      │ 1.0     │ 0.0          │ 1.0      │
+│ 2    │ ITC Avant Garde Std XLt         │ 0.9965   │ 1.0035  │ -2.04211e-7  │ 1.0      │
+│ 3    │ Kabel LT Std Black              │ 1.0      │ 1.00101 │ -0.000503525 │ 1.0005   │
+│ 4    │ Gill Sans                       │ 0.972742 │ 1.02949 │ -0.00111546  │ 1.00112  │
+│ 5    │ Gill Sans MT Pro Medium         │ 0.972742 │ 1.02949 │ -0.00111546  │ 1.00112  │
+│ 6    │ ITC Avant Garde Gothic Std      │ 0.993158 │ 1.01428 │ -0.00371842  │ 1.00372  │
+│ 7    │ ITC Avant Garde Std Bk          │ 0.993158 │ 1.01428 │ -0.00371842  │ 1.00372  │
+│ 8    │ ITC Avant Garde Std Md          │ 0.991246 │ 1.021   │ -0.00612158  │ 1.00612  │
+│ 9    │ Avenir Heavy                    │ 0.965208 │ 1.02078 │ 0.00700837   │ 0.992992 │
+⋮
+│ 1009 │ Akzidenz-Grotesk BQ Condensed A │ 2.30537  │ 5.19277 │ -2.74907     │ 3.74907  │
+│ 1010 │ AmplitudeComp-Ultra             │ 1.52721  │ 6.41949 │ -2.97335     │ 3.97335  │
+│ 1011 │ Industria LT Std Solid          │ 2.62973  │ 5.72823 │ -3.17898     │ 4.17898  │
+│ 1012 │ Bernard MT Condensed            │ 1.5877   │ 7.55733 │ -3.57252     │ 4.57252  │
+│ 1013 │ Impact                          │ 1.4851   │ 7.6678  │ -3.57645     │ 4.57645  │
+│ 1014 │ HeadLineA                       │ 1.6      │ 8.34783 │ -3.97391     │ 4.97391  │
+│ 1015 │ Univers LT Std 39 Thin UltraCn  │ 3.69307  │ 6.81657 │ -4.25482     │ 5.25482  │
+│ 1016 │ Helvetica LT Std ExtCompressed  │ 1.9595   │ 8.82251 │ -4.39101     │ 5.39101  │
+│ 1017 │ Gill Sans MT Pro Bold ExtCond   │ 2.70499  │ 9.1913  │ -4.94815     │ 5.94815  │
+│ 1018 │ Helvetica LT Std UltCompressed  │ 2.46103  │ 9.71489 │ -5.08796     │ 6.08796  │
 {% endhighlight julia %}
 
 Few typefaces are perfectly circular. Even [Circular](http://typographica.org/typeface-reviews/ll-circular/), LineTo's trendy geometric sans typeface, isn't perfectly circular.
@@ -724,6 +739,21 @@ Most of the least circular ones, according to this rough examination, are in the
 
 {% highlight julia %}
 display(df[end-10:end, :])
+
+11×5 DataFrames.DataFrame
+│ Row │ Fontname                        │ Outer   │ Inner   │ Total    │ Mean    │
+├─────┼─────────────────────────────────┼─────────┼─────────┼──────────┼─────────┤
+│ 1   │ Helvetica LT Std Compressed     │ 5.72485 │ 1.53453 │ -2.62969 │ 3.62969 │
+│ 2   │ Akzidenz-Grotesk BQ Condensed A │ 2.30537 │ 5.19277 │ -2.74907 │ 3.74907 │
+│ 3   │ AmplitudeComp-Ultra             │ 1.52721 │ 6.41949 │ -2.97335 │ 3.97335 │
+│ 4   │ Industria LT Std Solid          │ 2.62973 │ 5.72823 │ -3.17898 │ 4.17898 │
+│ 5   │ Bernard MT Condensed            │ 1.5877  │ 7.55733 │ -3.57252 │ 4.57252 │
+│ 6   │ Impact                          │ 1.4851  │ 7.6678  │ -3.57645 │ 4.57645 │
+│ 7   │ HeadLineA                       │ 1.6     │ 8.34783 │ -3.97391 │ 4.97391 │
+│ 8   │ Univers LT Std 39 Thin UltraCn  │ 3.69307 │ 6.81657 │ -4.25482 │ 5.25482 │
+│ 9   │ Helvetica LT Std ExtCompressed  │ 1.9595  │ 8.82251 │ -4.39101 │ 5.39101 │
+│ 10  │ Gill Sans MT Pro Bold ExtCond   │ 2.70499 │ 9.1913  │ -4.94815 │ 5.94815 │
+│ 11  │ Helvetica LT Std UltCompressed  │ 2.46103 │ 9.71489 │ -5.08796 │ 6.08796 │
 
 t = Table(2, 5, 170, 140)
 @png begin
@@ -744,6 +774,20 @@ The most circular ones on my computer are the classic geometric sans serif fonts
 {% highlight julia %}
 display(df[1:10, :])
 
+10×5 DataFrames.DataFrame
+│ Row │ Fontname                   │ Outer    │ Inner   │ Total        │ Mean     │
+├─────┼────────────────────────────┼──────────┼─────────┼──────────────┼──────────┤
+│ 1   │ Kabel LT Std Light         │ 1.0      │ 1.0     │ 0.0          │ 1.0      │
+│ 2   │ ITC Avant Garde Std XLt    │ 0.9965   │ 1.0035  │ -2.04211e-7  │ 1.0      │
+│ 3   │ Kabel LT Std Black         │ 1.0      │ 1.00101 │ -0.000503525 │ 1.0005   │
+│ 4   │ Gill Sans                  │ 0.972742 │ 1.02949 │ -0.00111546  │ 1.00112  │
+│ 5   │ Gill Sans MT Pro Medium    │ 0.972742 │ 1.02949 │ -0.00111546  │ 1.00112  │
+│ 6   │ ITC Avant Garde Gothic Std │ 0.993158 │ 1.01428 │ -0.00371842  │ 1.00372  │
+│ 7   │ ITC Avant Garde Std Bk     │ 0.993158 │ 1.01428 │ -0.00371842  │ 1.00372  │
+│ 8   │ ITC Avant Garde Std Md     │ 0.991246 │ 1.021   │ -0.00612158  │ 1.00612  │
+│ 9   │ Avenir Heavy               │ 0.965208 │ 1.02078 │ 0.00700837   │ 0.992992 │
+│ 10  │ DIN 30640 Std              │ 0.966066 │ 1.01366 │ 0.010139     │ 0.989861 │
+
 t = Table(2, 5, 160, 140)
 @png begin
     for (n, f) in enumerate(df[1:10, 1])
@@ -763,8 +807,20 @@ In the ‘most circular o’ fonts, there are a few examples from Rudolf Koch's 
 {% highlight julia %}
 kabel = df[[contains(fontname, r".*Kabel.*") for fontname in df[:Fontname]], :]
 
-# that's v0.6 syntax...
-# v0.7 is df[[occursin(r".*Kabel.*", fname) for fname  in df[:Name]], :]
+9×5 DataFrames.DataFrame
+│ Row │ Fontname             │ Outer    │ Inner   │ Total        │ Mean     │
+├─────┼──────────────────────┼──────────┼─────────┼──────────────┼──────────┤
+│ 1   │ Kabel LT Std Light   │ 1.0      │ 1.0     │ 0.0          │ 1.0      │
+│ 2   │ Kabel LT Std Black   │ 1.0      │ 1.00101 │ -0.000503525 │ 1.0005   │
+│ 3   │ ITC Kabel Std Medium │ 0.976604 │ 0.99728 │ 0.0130582    │ 0.986942 │
+│ 4   │ Kabel LT Std         │ 1.02945  │ 1.0     │ -0.014727    │ 1.01473  │
+│ 5   │ Kabel LT Std Book    │ 1.02945  │ 1.0     │ -0.014727    │ 1.01473  │
+│ 6   │ ITC Kabel Std Ultra  │ 0.961288 │ 1.07731 │ -0.0193006   │ 1.0193   │
+│ 7   │ ITC Kabel Std        │ 1.02357  │ 1.02993 │ -0.0267482   │ 1.02675  │
+│ 8   │ ITC Kabel Std Book   │ 1.02357  │ 1.02993 │ -0.0267482   │ 1.02675  │
+│ 9   │ ITCKabel             │ 1.02357  │ 1.02993 │ -0.0267482   │ 1.02675  │
+
+# that's v0.6 syntax... v0.7 is df[[occursin(r".*Kabel.*", fname) for fname  in df[:Name]], :]
 
 t = Table(2, 5, 160, 140)
 @png begin
@@ -801,7 +857,7 @@ $$
  \end{equation}
 $$
 
-The following `drawcurvature()` function uses the kappa value to work out the slope, and draw a perpendicular to the curve, with lengths varying according to the value of kappa, indicating the way the curvature changes.
+ The following `drawcurvature()` function uses the kappa value to work out the slope, and draw a perpendicular to the curve, with lengths varying according to the value of kappa, indicating the way the curvature changes.
 
 (This is another *kappa*, by the way, no relation to the Bézier circularity kappa. Or indeed to the Lancia Kappa...
 
@@ -809,9 +865,9 @@ The following `drawcurvature()` function uses the kappa value to work out the sl
 
 [Photograph by Rudolf Stricker](https://commons.wikimedia.org/wiki/File:Lancia_Kappa_front_20110130.jpg)
 
-...or to many of the other things called kappa, such as the curvature of the universe, the torsional constant of an oscillator, Einstein's constant of gravitation, the coupling coefficient in magnetostatics—and that's just in physics.)
-
 {% highlight julia %}
+#...or to many of the other things called kappa, such as the curvature of the universe, the torsional constant of an oscillator, Einstein's constant of gravitation, the coupling coefficient in magnetostatics—and that's just in physics.)
+
 function drawcurvature(bezpathsegment::BezierPathSegment;
         scale=500,
         stepby=0.01,
@@ -1301,7 +1357,7 @@ unpetitbang()
 
 ![un petit bang](/images/bezier/unpetitbang.png)
 
-[2018-06-21]
+[2018-06-20]
 
 ### Footnotes
 
