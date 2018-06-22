@@ -604,7 +604,7 @@ end
 
 sort!(df, :Total, lt = (a, b) -> abs(a) < abs(b))
 
-# Few typefaces are perfectly circular. Even [Circular](http://typographica.org/typeface-reviews/ll-circular/), LineTo's trendy geometric sans typeface. isn't perfectly circular.
+# Few typefaces are perfectly circular. Even [Circular](http://typographica.org/typeface-reviews/ll-circular/), LineTo's trendy geometric sans typeface, isn't perfectly circular.
 
 # Most of the least circular ones, according to this rough examination, are in the Condensed and Compressed sections of the font libraries. No surprise, Sherlock.
 
@@ -765,7 +765,7 @@ end 800 500 "images/bezier/typecomb.png"
 
 # ### Osculate my Béziers
 
-# The value of kappa is typically very small, so the *radius of curvature*, which is defined as $\frac{1}{kappa}$, can become very large. This radius value defines a circle that just touches the curve and follows the curvature at that point. Mathematicians, in typically romantic mood, call it the *osculating circle*, *osculate* being from the Latin noun *osculum*, meaning "kiss".
+# The value of kappa is typically very small, so the *radius of curvature*, which is defined as $$\frac{1}{kappa}$$, can become very large. This radius value defines a circle that just touches the curve and follows the curvature at that point. Mathematicians, in typically romantic mood, call it the *osculating circle*, *osculate* being from the Latin noun *osculum*, meaning "kiss".
 
 # Drawing osculating circles can be a challenge; they grow very large when the curve looks flat. To be honest it's a tricky diagram to style up, and there's a lot of information that it would be cool to keep and a shame to throw away. There's quite a bit of osculation going on here...
 
