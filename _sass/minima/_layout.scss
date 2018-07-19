@@ -10,6 +10,12 @@
   position: relative;
 }
 
+
+body {
+    background-image: url(/images/background.png);
+    background-repeat: no-repeat;
+    }
+
 .site-title {
   @include relative-font-size(1.625);
   font-weight: 300;
@@ -176,6 +182,7 @@
  * Page content
  */
 .page-content {
+  margin: 160px 0 0 0;
   padding: $spacing-unit 0;
   flex: 1;
 }
