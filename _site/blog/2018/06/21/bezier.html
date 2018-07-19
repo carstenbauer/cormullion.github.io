@@ -1,37 +1,4 @@
-<!DOCTYPE html>
-<html lang="en"><head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.4.0 -->
-<title>Bezier Moi | cormullion</title>
-<meta name="generator" content="Jekyll v3.8.1" />
-<meta property="og:title" content="Bezier Moi" />
-<meta property="og:locale" content="en_US" />
-<meta name="description" content="This post was inspired mostly by the arrival of the new Julia package Literate.jl by Fredrik Ekre. Literate lets you write a Julia source file, a Markdown blog post, and a Jupyter notebook all at the same time. It’s magic, or, at least, indistinguishable from magic… As a result, you might be able to find a Jupyter notebook version of this Markdown-converted Julia source file somewhere nearby (look in the github repo for this blog, perhaps). The code uses the following packages, Literate, Luxor, Colors, Roots, Fontconfig, DataFrames, Iterators, ColorSchemes, and should work in Julia v0.6 (some packages such as Colors have yet to be updated to work with version 0.7)." />
-<meta property="og:description" content="This post was inspired mostly by the arrival of the new Julia package Literate.jl by Fredrik Ekre. Literate lets you write a Julia source file, a Markdown blog post, and a Jupyter notebook all at the same time. It’s magic, or, at least, indistinguishable from magic… As a result, you might be able to find a Jupyter notebook version of this Markdown-converted Julia source file somewhere nearby (look in the github repo for this blog, perhaps). The code uses the following packages, Literate, Luxor, Colors, Roots, Fontconfig, DataFrames, Iterators, ColorSchemes, and should work in Julia v0.6 (some packages such as Colors have yet to be updated to work with version 0.7)." />
-<link rel="canonical" href="http://localhost:4000/blog/2018/06/21/bezier.markdown.html" />
-<meta property="og:url" content="http://localhost:4000/blog/2018/06/21/bezier.markdown.html" />
-<meta property="og:site_name" content="cormullion" />
-<meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-06-21T01:00:00+01:00" />
-<script type="application/ld+json">
-{"url":"http://localhost:4000/blog/2018/06/21/bezier.markdown.html","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/blog/2018/06/21/bezier.markdown.html"},"description":"This post was inspired mostly by the arrival of the new Julia package Literate.jl by Fredrik Ekre. Literate lets you write a Julia source file, a Markdown blog post, and a Jupyter notebook all at the same time. It’s magic, or, at least, indistinguishable from magic… As a result, you might be able to find a Jupyter notebook version of this Markdown-converted Julia source file somewhere nearby (look in the github repo for this blog, perhaps). The code uses the following packages, Literate, Luxor, Colors, Roots, Fontconfig, DataFrames, Iterators, ColorSchemes, and should work in Julia v0.6 (some packages such as Colors have yet to be updated to work with version 0.7).","@type":"BlogPosting","headline":"Bezier Moi","dateModified":"2018-06-21T01:00:00+01:00","datePublished":"2018-06-21T01:00:00+01:00","@context":"http://schema.org"}</script>
-<!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="cormullion" /></head>
-<body><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
-<main class="page-content" aria-label="Content">
-      <div class="wrapper">
-        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
-
-  <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">Bezier Moi</h1>
-    <p class="post-meta">
-      <time class="dt-published" datetime="2018-06-21T01:00:00+01:00" itemprop="datePublished">Jun 21, 2018
-      </time></p>
-  </header>
-
-  <div class="post-content e-content" itemprop="articleBody">
-    <blockquote>
+<blockquote>
   <p>This post was inspired mostly by the arrival of the new Julia package <a href="https://github.com/fredrikekre/Literate.jl">Literate.jl</a> by Fredrik Ekre. Literate lets you write a Julia source file, a Markdown blog post, and a Jupyter notebook all at the same time. It’s magic, or, at least, indistinguishable from magic… As a result, you might be able to find a Jupyter notebook version of this Markdown-converted Julia source file somewhere nearby (look in the <a href="https://github.com/cormullion/cormullion.github.io">github repo</a> for this blog, perhaps). The code uses the following packages, Literate, Luxor, Colors, Roots, Fontconfig, DataFrames, Iterators, ColorSchemes, and should work in Julia v0.6 (some packages such as Colors have yet to be updated to work with version 0.7).</p>
 </blockquote>
 
@@ -1356,14 +1323,3 @@ k = 0.5522847498307936                                                          
 <p>All the images in this post are in PNG, but they looked better in the vector-based SVG format. However, there’s an annoying ‘bug’ in Jupyter/IJulia/IPython involving text in SVG images created by Cairo. What happens is that Cairo tries to be smart and stores text in XML symbols, suitable for re-use. A good idea, but unfortunately they’re stored in the notebook’s ‘global XML scope’, and so later cells accidentally pick up symbol definitions from earlier cells and re-use them, even though that’s not always what you want. A solution would be to somehow encapsulate the SVG image in a cell to prevent the definitions leaking. I don’t know how to do that yet, but there’s an <a href="https://github.com/JuliaLang/IJulia.jl/issues/662">open issue</a> if you can help me find a workround…</p>
 
 <p><em>This page was generated using <a href="https://github.com/fredrikekre/Literate.jl">Literate.jl</a>.</em></p>
-
-  </div><a class="u-url" href="/blog/2018/06/21/bezier.markdown.html" hidden></a>
-</article>
-
-      </div>
-    </main><footer>
-  <p><a href="https://cormullion.github.io">https://cormullion.github.io</a></p>
-</footer>
-</body>
-
-</html>
