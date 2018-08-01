@@ -61,7 +61,17 @@ img {
   vertical-align: middle;
 }
 
+/* full width image */
 
+.full-width {
+  max-width: 400%;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
 
 /**
  * Figures
@@ -259,4 +269,13 @@ table {
 {
     margin: 0 auto;
     display: block;
+}
+
+.smallheading
+{
+    font-variant:small-caps;
+    font-weight: 900;
+    font-family: Montserrat, -apple-system, Roboto, Helvetica, Arial, sans-serif;
+    margin: 0 auto;
+    display: inline-block;
 }
