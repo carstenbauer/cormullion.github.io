@@ -71,6 +71,8 @@ table td { border: 1px solid #e8e8e8; }
 
 .smallheading { font-variant: small-caps; font-weight: 900; font-family: Montserrat, -apple-system, Roboto, Helvetica, Arial, sans-serif; margin: 0 auto; display: inline-block; }
 
+.homebutton { font-variant: small-caps; background-color: "white"; font-weight: 900; font-family: Montserrat, -apple-system, Roboto, Helvetica, Arial, sans-serif; position: absolute; top: 160px; left: 40px; }
+
 /** Site header */
 .site-header { border-top: 5px solid #424242; border-bottom: 1px solid #e8e8e8; min-height: 55.95px; position: relative; }
 
