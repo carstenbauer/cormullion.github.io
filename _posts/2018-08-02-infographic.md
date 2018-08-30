@@ -5,6 +5,8 @@ date:   2018-08-01 19:03:00 +0100
 categories: blog
 ---
 
+_Updated 30 August to include the latest release_
+
 Instead of my usual graphical doodles, I thought I'd try to draw an infographic about Julia. I got hold of the git log for the [main Julia repository on github.com](https://github.com/JuliaLang/julia){:target="_blank"}, and had a go at interpreting it visually.
 
 A good infographic can both confirm and reveal truths about the data. Usually the visuals confirm what we probably already know, or could easily find out from scanning the numbers in a table. There's nothing wrong with that; it can enable faster and better communication, and promote wider understanding. Occasionally, though, an infographic can reveal new things that you might not have spotted without the graphical interpretation. Either way, an infographic can offer both Confirmation and Revelation. I hoped I'd be able to provide at least one of these in my first attempt.
