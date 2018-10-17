@@ -198,3 +198,5 @@ accumulatepi()
 For a complete font based on the average shapes of many other fonts, have a look at [Averia](http://www.iotic.com/averia/).
 
 I haven't yet found a way to list all the fonts that contain the full set of Unicode π symbols. In theory I think I can use [Freetype.jl](https://github.com/juliagraphics/FreeType.jl) to inspect a font to see whether it contains code points for particular character glyphs. Perhaps I'll report back on 3-14-19 with any progress...
+
+![cormullion signing off](http://steampiano.net/cormullionknot.gif?piography){: .center-image}

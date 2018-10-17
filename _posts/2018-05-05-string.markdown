@@ -388,3 +388,5 @@ Well, Scott said the last iteration was pretty. So that's nice! Here it is in us
 ![github page](/images/string/github-page.png){: .center-image}
 
 [2018-05-07]
+
+![cormullion signing off](http://steampiano.net/cormullionknot.gif?string){: .center-image}

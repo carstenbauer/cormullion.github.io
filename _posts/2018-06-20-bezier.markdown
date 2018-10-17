@@ -1370,3 +1370,5 @@ Don Lancaster is the totally awesome dude who was active in the very early days 
 All the images in this post are in PNG, but they looked better in the vector-based SVG format. However, there's an annoying ‘bug’ in Jupyter/IJulia/IPython involving text in SVG images created by Cairo. What happens is that Cairo tries to be smart and stores text in XML symbols, suitable for re-use. A good idea, but unfortunately they're stored in the notebook's ‘global XML scope’, and so later cells accidentally pick up symbol definitions from earlier cells and re-use them, even though that's not always what you want. A solution would be to somehow encapsulate the SVG image in a cell to prevent the definitions leaking. I don't know how to do that yet, but there's an [open issue](https://github.com/JuliaLang/IJulia.jl/issues/662) if you can help me find a workround...
 
 *This page was generated using [Literate.jl](https://github.com/fredrikekre/Literate.jl).*
+
+![cormullion signing off](http://steampiano.net/cormullionknot.gif?bezier){: .center-image}

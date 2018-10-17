@@ -196,3 +196,5 @@ Since an image for any given dataset at any instant can be produced, it's not to
 If you find any egregious errors or omissions that you'd like me to fix, raise an issue on this page's [github](https://github.com/cormullion/cormullion.github.io){:target="_blank"} and I'll look at, and possibly into, it.
 
 [2018—08-01]
+
+![cormullion signing off](http://steampiano.net/cormullionknot.gif?infographic){: .center-image}

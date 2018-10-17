@@ -83,3 +83,5 @@ The most pleasing versions of both Pluto symbols I've found in my font library a
 I'm not sure whether the New Horizons spacecraft, soon to arrive at Pluto, bears either of the Pluto symbols. But, in keeping with the theme of death and the underworld, there's a tiny sample of Clyde Tombaugh's ashes attached to the side:
 
 ![Clyde's ashes](/images/pluto/nh_Tombaugh_ashes.jpg)
+
+![cormullion signing off](http://steampiano.net/cormullionknot.gif?pluto){: .center-image}

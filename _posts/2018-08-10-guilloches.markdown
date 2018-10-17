@@ -74,3 +74,5 @@ Anti-forging techniques have progressed a lot since the heyday of the guilloches
 All of which doesn't—I hope—detract from the achievements of the winners of this year's Julia Community prize. Congratulations!
 
 [2018-08-10]
+
+![cormullion signing off](http://steampiano.net/cormullionknot.gif?guilloches){: .center-image}
