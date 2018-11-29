@@ -250,8 +250,6 @@ using ColorSchemes
 
 function treerings()
     @svg begin
-        Luxor.initnoise()
-
         nrate = 0.01
         npoints= 500
         nrings = 400
@@ -263,7 +261,7 @@ function treerings()
                 push!(pts, polar(rad + (ring * noise(i * nrate)),
                     rescale(i, 1, npoints, 0, 2pi)))
             end
-            sethue(get(ColorSchemes.sienna, noise(ring * rate)))
+            sethue(get(ColorSchemes.sienna, noise(ring * 5nrate)))
             poly(pts, :fill, close=false)
             sethue("black")
             poly(pts, :stroke, close=false)
