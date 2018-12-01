@@ -490,7 +490,7 @@ end 300 300 "images/automata/ca-as-path.svg"
 
 # [^1]: At the time of writing this I couldn't find any working Julia packages that did one-dimensional cellular automata. But if I had found one, I probably wouldn't have written any of the above anyway.
 
-# ![cormullion signing off](http://steampiano.net/cormullionknot.gif?noise){: .center-image}
+# ![cormullion signing off](http://steampiano.net/cormullionknot.gif?automata){: .center-image}
 
                                                                                             #src
 using Literate                                                                              #src
