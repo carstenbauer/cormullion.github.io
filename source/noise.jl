@@ -520,7 +520,7 @@ function layer(leftminheight, rightminheight, noiserate;
     ip1 = between(c4, c1, leftminheight)
     ip2 = between(c3, c2, rightminheight)
     topedge = Point[]
-    seednoise(rand(1:12, 512))
+    # seednoise(rand(1:12, 512))
     for x in ip1.x:2:ip2.x
         ypos = between(ip1, ip2, rescale(x, ip1.x, ip2.x, 0, 1)).y
         ypos *= noise(x/noiserate,
