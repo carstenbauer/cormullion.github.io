@@ -512,22 +512,21 @@ end 800 800 "images/noise/isosolid.png"
 
 # The final images in this post combine 2D noise and 1D noise; 2D noise for the sky, and 1D noise to create the contours.
 
-# There's a `seednoise()` function. This takes an array of 512 integers between 1 and 12, and is broadly the equivalent of the `Random.seed!()` function in Julia. This is useful when you want the noise to vary from image to image.
+# There's a `initnoise()` function. This is broadly the equivalent of the `Random.seed!()` function in Julia. This is useful when you want the noise to vary from image to image.
 
 function layer(leftminheight, rightminheight, noiserate;
         detail=1, persistence=0)
     c1, c2, c3, c4 = box(BoundingBox(), vertices=true)
-    ip1 = between(c4, c1, leftminheight)
-    ip2 = between(c3, c2, rightminheight)
+    ip1 = between(c1, c2, leftminheight)
+    ip2 = between(c4, c3, rightminheight)
     topedge = Point[]
-    # seednoise(rand(1:12, 512))
+    initnoise(rand(1:12))
     for x in ip1.x:2:ip2.x
         ypos = between(ip1, ip2, rescale(x, ip1.x, ip2.x, 0, 1)).y
-        ypos *= noise(x/noiserate,
-            detail=detail, persistence=persistence)
+        ypos *= noise(x/noiserate, detail=detail, persistence=persistence)
         push!(topedge, Point(x, ypos))
     end
-    p = [c4, topedge..., c3]
+    p = [c1, topedge..., c4]
     poly(p, :fill, close=true)
 end
 
@@ -538,7 +537,7 @@ function clouds()
     @layer begin
         transform([3 0 0 1 0 0])
         setopacity(0.3)
-        noiserate = 0.01
+        noiserate = 0.03
         for (pos, n) in tiles
             nv = noise(pos.x * noiserate,
                        pos.y * noiserate,
@@ -590,9 +589,9 @@ function landscape(scheme, filename)
     setopacity(0.8)
     ## how many layers
     len = 6
-    noiselevels =  range(1000, length=len, stop=200)
+    noiselevels =  range(100, length=len, stop=10)
     detaillevels = 1:len
-    persistencelevels = range(0.5, length=len, stop=0.85 )
+    persistencelevels = range(0.5, length=len, stop=0.95 )
     for (n, i) in enumerate(range(1, length=len, stop=0))
         ## avoid extremes of range
         sethue(colorblend(get(scheme, .05), get(scheme, .95), i))
