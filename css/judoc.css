@@ -158,7 +158,8 @@ html {
     KATEX
 ================================================================== */
 
-body { counter-reset: eqnum; }
+body { counter-reset: eqnum;
+    }
 
 .katex { font-size: 1em !important; }
 

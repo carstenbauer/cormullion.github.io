@@ -1,8 +1,6 @@
 @def title = "Infographic"
 @def hascode = true
 
-# Infographic
-
 _Updated 30 August 2018 to include the latest release_
 
 Instead of my usual graphical doodles, I thought I'd try to draw an infographic about Julia. I got hold of the git log for the [main Julia repository on github.com](https://github.com/JuliaLang/julia), and had a go at interpreting it visually.

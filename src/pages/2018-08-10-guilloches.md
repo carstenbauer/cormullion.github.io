@@ -1,8 +1,6 @@
 @def title = "Guilloches"
 @def hascode = true
 
-# Guilloches
-
 This year's Julia conference is nearly over, and [JuliaCon 2018](http://juliacon.org/2018/) has been a great success. I wasn't able to attend in person, but there were numerous live video streams, and many tweeters kept everyone around the world up to date. There was even a [live-streamed github commit](https://www.youtube.com/watch?v=1jN5wKvN-Uk&t=749s&index=2&list=PLP8iPy9hna6Qsq5_-zrg0NTwqDSDYtfQB&frags=pl%2Cwn) of the 1.0 release! So thanks to you all and to the audio-visual folks for enabling us to attend in spirit.
 
 I was fortunate enough to be allowed to contribute in a very small way. Avik asked me to help with making certificates to be presented to the winners of the [Julia Community Prizes](http://juliacon.org/2018/prize.html). These certificates were made with Julia (of course!); here's a slightly modified (unofficial, unsigned!) version of the certificate. I've added all the winner's names and their citations.

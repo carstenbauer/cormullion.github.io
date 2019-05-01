@@ -1,11 +1,9 @@
 @def title = "Pentachoron"
 @def hascode = true
 
-# Pentachoron
-
 > This page contains quite a few animated GIFs. I apologise in advance if your browser or network connection doesn't like them. It's much easier to add a GIF than it is to embed a video into a GitHub pages blog, unfortunately.
 
-![image label](/assets/images/pentachoron/header-image.svg)
+![flying pentachorons](/assets/images/pentachoron/header-image.svg)
 
 I encountered the word "pentachoron" recently for the first time, and I thought it had to be something cool. Turns out it is, so I thought I'd have a go at drawing one...
 

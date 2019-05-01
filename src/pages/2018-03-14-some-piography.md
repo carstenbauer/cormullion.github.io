@@ -1,8 +1,6 @@
 @def title = "Some π-ography!"
 @def hascode = true
 
-# Some π-ography
-
 > This post was originally intended to be a light-hearted addendum to the serious math stuff that usually gets posted on the [official Julia blog](https://julialang.org/blog/) on Pi day, but in the end there were no other contributions, so Simon asked if I wanted to go ahead anyway. So this had more prominence than I expected. This is the final draft; there were some improvements made by the community after I'd submitted it.
 
 Although we've known about "Archimedes' constant" for a few millennia, we've been referring to it as the Greek letter π only since the 1700s. Patricia Rothman [suggested](https://www.historytoday.com/patricia-rothman/william-jones-and-his-circle-man-who-invented-pi) that the following page *could* contain one of the earliest uses of the Greek character to indicate the concept. It's from a mathematics text book written by William Jones and published in 1706:

@@ -1,8 +1,6 @@
-@def title = "JuDoc Example"
+@def title = "Hello!"
 @def hasmath = false
 @def hascode = false
-
-# Hello!
 
 This is my blog, containing a few posts exploring the [Julia language](julialang.org) and my ongoing attempts to learn 2D vector graphics with it. Nearly every graphic you see here uses my simple wrapper for the Cairo graphics library, called [Luxor.jl](https://github.com/JuliaGraphics/Luxor.jl).
 
