@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {{if hasmath}} {{insert head_katex.html }}     {{end}}
+    {{if hascode}} {{insert head_highlight.html }}   {{end}}
+    <link rel="stylesheet" href="/css/judoc.css">
+    <link rel="stylesheet" href="/css/tufte.css">
+    <link rel="stylesheet" href="/css/latex.css">
+    <link rel="stylesheet" href="/css/adjust.css"> <!-- sheet to overwrite some clashing styles -->
+    <link rel="icon" href="/assets/infra/favicon.png">
+    {{isdef title}} <title>{{fill title}}</title>  {{end}}
+</head>
+
+<body>
+  <div id="layout">
+    <div id="menu">
+      <ul>
+        <li><img src="/assets/images/hyperbolic.png" width=80 height=80 /></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/pub/2019-04-03-pentachoron.html">Pentachoron</a></li>
+        <li><a href="/pub/2019-03-13-piday.html">π day</a></li>
+        <li><a href="/pub/2018-11-29-automata.html">Automata</a></li>
+        <li><a href="/pub/2018-10-11-noise.html">Noise</a></li>
+        <li><a href="/pub/2018-08-10-guilloches.html">Guilloches</a></li>
+        <li><a href="/pub/2018-08-02-infographic.html">Infographic</a></li>
+        <li><a href="/pub/2018-06-20-bezier.html">Bézier Moi</a></li>
+        <li><a href="/pub/2018-05-05-string.html">String</a></li>
+        <li><a href="/pub/2018-03-14-some-piography.html">Some π-ography</a></li>
+        <li><a href="/pub/2015-06-02-pluto.html">Pluto</a></li>
+      </ul>
+    </div>
+    <div id="main">
+
+
+<!-- Content appended here -->
