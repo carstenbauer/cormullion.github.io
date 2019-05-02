@@ -2,7 +2,7 @@
 @def hasmath = false
 @def hascode = false
 
-This is my blog, containing a few posts exploring the [Julia language](julialang.org) and my ongoing attempts to learn 2D vector graphics with it. Nearly every graphic you see here uses my simple wrapper for the Cairo graphics library, called [Luxor.jl](https://github.com/JuliaGraphics/Luxor.jl).
+This is my blog, containing a few posts exploring the [Julia language](https://julialang.org) and my ongoing attempts to learn 2D vector graphics with it. Nearly every graphic you see here uses my simple wrapper for the Cairo graphics library, called [Luxor.jl](https://github.com/JuliaGraphics/Luxor.jl).
 
 ![some wallpaper](/assets/images/wallpaper-1280-480.png)
 

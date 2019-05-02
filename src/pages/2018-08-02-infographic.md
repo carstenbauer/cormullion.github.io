@@ -9,19 +9,15 @@ A good infographic can both confirm and reveal truths about the data. Usually th
 
 Infographics ought to stand alone, and not need accompanying explanations. So here is the PDF (in various colorschemes):
 
-[![infographic ice](/assets/images/infographic/infographic-ice-thumb.png)](/assets/images/infographic/infographic-ColorSchemes.ice.pdf)
-
-[![infographic leonardo da vinci](/assets/images/infographic/infographic-leonardo-thumb.png)](/assets/images/infographic/infographic-ColorSchemes.leonardo.pdf)
-
-[![infographic auerbach](/assets/images/infographic/infographic-auerbach-thumb.png)]([/assets/images/infographic/infographic-ColorSchemes.auerbach.pdf)
-
-[![infographic 50 shades of grey](/assets/images/infographic/infographic-greys-thumb.png)]([/assets/images/infographic/infographic-ColorSchemes.Greys_9.pdf)
+[![infographic ice](/assets/images/infographic/infographic-ice-thumb.png)](/assets/images/infographic/infographic-ColorSchemes.ice.pdf) [![infographic leonardo da vinci](/assets/images/infographic/infographic-leonardo-thumb.png)](/assets/images/infographic/infographic-ColorSchemes.leonardo.pdf) [![infographic auerbach](/assets/images/infographic/infographic-auerbach-thumb.png)]([/assets/images/infographic/infographic-ColorSchemes.auerbach.pdf) [![infographic 50 shades of grey](/assets/images/infographic/infographic-greys-thumb.png)]([/assets/images/infographic/infographic-ColorSchemes.Greys_9.pdf)
 
 The rest of this post consists merely of footnotes and implementation details!
 
 ![](/assets/images/infographic/commits.png)
 
-**Commits as data units**  The git log contains all the commits to the repository. A commit is a precise piece of information in some ways, but is quite loosely defined in others. For example, a single commit might be a substantial addition to the language, the final result of months of intensive work. Or it could be merely the addition of a missing [Oxford comma](https://www.grammarly.com/blog/what-is-the-oxford-comma-and-why-do-people-care-so-much-about-it/) in a docstring, the work of a few seconds.
+## Commits as data units
+
+The git log contains all the commits to the repository. A commit is a precise piece of information in some ways, but is quite loosely defined in others. For example, a single commit might be a substantial addition to the language, the final result of months of intensive work. Or it could be merely the addition of a missing [Oxford comma](https://www.grammarly.com/blog/what-is-the-oxford-comma-and-why-do-people-care-so-much-about-it/) in a docstring, the work of a few seconds.
 
 One of the great things about Julia is that you don't have to be an advanced programmer to contribute to its development.
 
@@ -103,7 +99,9 @@ giving you:
 
 ![names](/assets/images/infographic/names.png)
 
-**Noise in the data**  I doubt whether many data sources are perfect. I couldn't check for all possible errors in the incoming git log file. But I did notice a few things that I'd thought I'd repair. For example, I noticed that occasionally different names appeared for the same person:
+## Noise in the data
+
+I doubt whether many data sources are perfect. I couldn't check for all possible errors in the incoming git log file. But I did notice a few things that I'd thought I'd repair. For example, I noticed that occasionally different names appeared for the same person:
 
 ```
 5×2 DataFrames.DataFrame
@@ -123,7 +121,9 @@ After spotting that, I spent a bit of time with [Combinatorics.jl](https://githu
 
 ![](/assets/images/infographic/lineplot.png)
 
-**Total contributors and total commits**  The graphs for total contributors and total commits weren't very interesting (at least visually speaking—it's really cool in reality!). Obviously, each new contributor brings at least one commit, so there's naturally some correlation.
+## Total contributors and total commits
+
+The graphs for total contributors and total commits weren't very interesting (at least visually speaking—it's really cool in reality!). Obviously, each new contributor brings at least one commit, so there's naturally some correlation.
 
 Perhaps one day the early days of the creation of Julia leading up to the first commit will be told and dramatized on TV.
 
@@ -131,7 +131,9 @@ The *Commits per month* bar chart shows how many commits were made in each month
 
 ![](/assets/images/infographic/releases.png)
 
-**Please release me**  I thought I'd add data about Julia releases. Obtaining this was a bit of a pain, because I ended up on [GitHub GraphQL API v4](https://developer.github.com/v4/), trying to use GraphQL, which is about as user-friendly as a hungry tiger trying to order groceries online, but eventually I got something useful in JSON, and [JSON.jl](https://github.com/JuliaIO/JSON.jl) did the rest. Once converted to Julia's nifty version strings, I could then extract the release numbers and use them for useful and important tasks, such as choosing colors.
+## Please release me
+
+I thought I'd add data about Julia releases. Obtaining this was a bit of a pain, because I ended up on [GitHub GraphQL API v4](https://developer.github.com/v4/), trying to use GraphQL, which is about as user-friendly as a hungry tiger trying to order groceries online, but eventually I got something useful in JSON, and [JSON.jl](https://github.com/JuliaIO/JSON.jl) did the rest. Once converted to Julia's nifty version strings, I could then extract the release numbers and use them for useful and important tasks, such as choosing colors.
 
 I thought I'd avoid starting the line for each release in an obvious place, and try marking just the final release date precisely. The increasing saturation and changing colors of the bars probably breaks more than one of [Professor Edward Tufte](https://www.edwardtufte.com/tufte/)'s Ten Commandments; all the "ink" in these bars represents virtually zero data, and, with those vague blends, probably defies commandments numbers 1 and 2 (whatever they are).
 
@@ -139,7 +141,9 @@ For obvious reasons I don't consider this graphic to be finished. I might update
 
 ![](/assets/images/infographic/timezones.png)
 
-**In the zone**  I assumed that the time zone information stored in the git log is mostly correct. I don't really understand time zones. My excuse is that I live in the land of Greenwich Mean Time, UTC 0, and can just about cope with British Summer Time.
+## In the zone
+
+I assumed that the time zone information stored in the git log is mostly correct. I don't really understand time zones. My excuse is that I live in the land of Greenwich Mean Time, UTC 0, and can just about cope with British Summer Time.
 
 It's easy to spot the main centers of Julia development—the distinctive 5 hour and 30 minute offset from UTC of Indian Standard Time is a steady signal dominated though by the primary Julia community living in the UTC-4 and UTC-5 zones, and the recent increase in activity from the UTC+2 zone.
 
@@ -147,7 +151,9 @@ There are a few examples of commits from authors in multiple time zones in the s
 
 ![](/assets/images/infographic/firstandlast.png)
 
-**The first shall be last**  The lowest panel on the infographic is an attempt to draw each contributor's earliest and most recent commits, joined with a line. At normal viewing scale, it's a thicket of unreadability, but if you zoom in you might be able to see more of the contributors' names, in font sizes that are scaled relative to their share of the total. It was difficult to avoid the names overlapping other names.
+## The first shall be last
+
+The lowest panel on the infographic is an attempt to draw each contributor's earliest and most recent commits, joined with a line. At normal viewing scale, it's a thicket of unreadability, but if you zoom in you might be able to see more of the contributors' names, in font sizes that are scaled relative to their share of the total. It was difficult to avoid the names overlapping other names.
 
 Of course, the recent endpoints aren't permanently fixed - people do move on to other things but may come back. Anyway, you don't always have to make new commits to the base language to continue contributing to Julia.
 
@@ -157,7 +163,9 @@ It's also worth remembering that this is only showing the base Julia repository;
 
 ![](/assets/images/infographic/boxes.png)
 
-**Little boxes**  The boxmap on the right-hand side shows each of the 900 or so contributors' share of the Julia language in terms of percentages of commits to the main repository. It clearly shows the 'long tail' of the community. You could say that 50% of the Julia language is written by about six people. Equally you could say that 50% is written by the rest of the contributors. It's probably safe to say that that first 50% is probably the more important half, but some of these smaller boxes will represent significant commits that are just as important.
+## Little boxes
+
+The boxmap on the right-hand side shows each of the 900 or so contributors' share of the Julia language in terms of percentages of commits to the main repository. It clearly shows the 'long tail' of the community. You could say that 50% of the Julia language is written by about six people. Equally you could say that 50% is written by the rest of the contributors. It's probably safe to say that that first 50% is probably the more important half, but some of these smaller boxes will represent significant commits that are just as important.
 
 I was unsure about including the names of individuals here because, obviously, there's just not enough room to include everyone's name; it's good to include everyone, and bad to miss people out. At least everyone has a box of their own, even if it's too small to be labelled.
 
@@ -182,7 +190,9 @@ end
 
 ![](/assets/images/infographic/variations.png)
 
-**Theme and variations**  One minor benefit of analysing data using Julia is that you can try different dates or different repositories. For example, [here's](/assets/images/infographic/infographic-images-ColorSchemes.ice.pdf) a look through the same "lens" at the [Images.jl](https://github.com/JuliaImages/Images.jl) repository, which has been evolving for a few years now, guided chiefly by the amazing Professor Tim Holy. (There are way more releases though, with 140 compared with Julia's 59; some tweaking of formats would be necessary to show them all in the same format...)
+## Theme and variations
+
+One minor benefit of analysing data using Julia is that you can try different dates or different repositories. For example, [here's](/assets/images/infographic/infographic-images-ColorSchemes.ice.pdf) a look through the same "lens" at the [Images.jl](https://github.com/JuliaImages/Images.jl) repository, which has been evolving for a few years now, guided chiefly by the amazing Professor Tim Holy. (There are way more releases though, with 140 compared with Julia's 59; some tweaking of formats would be necessary to show them all in the same format...)
 
 Running through colorschemes at random is also quite fun. One of the ones I'm trying out here is called `auerbach`. It's extracted from a painting by [Frank Auerbach](https://www.nationalgalleries.org/art-and-artists/94594/portrait-julia), the artist who spreads oil paint very thickly on his canvases (which I suppose might contribute to their million pound price tags).
 
@@ -190,7 +200,9 @@ It's useful to run the same analysis on different sets of data. `DatasetA` may l
 
 Since an image for any given dataset at any instant can be produced, it's not too difficult to imagine making a video consisting of snapshots of the data at a series of moments in time, showing how various trends evolve. The problem though is that the design was originally intended for PDF, and it's always easier if you can target a design at a specific format (ask any harassed web designer). Also, the resolution of videos is usually worse than the resolution of PDFs, so the details would be much less easy to read. Even working through the incantations in the *[Sacred Book of ffmpeg](https://ffmpeg.org/ffmpeg.html#Video-Options)* isn't going to make a PDF work well as a video. So only an idiot would try to make a video out of PDFs, and you can view [my attempt on YouTube](https://www.youtube.com/channel/UCfd52kTA5JpzOEItSqXLQxg).
 
-**And finally...**  So here's a message from the name behind one small box on this chart to all the other names in all the other boxes and to all the other contributors who are working elsewhere in the Julia ecosystem: *thank you* for your efforts, for your refusal to settle for yesterday's state of the art, and for your continuing work towards building the new Julia language!
+## And finally...
+
+So here's a message from the name behind one small box on this chart to all the other names in all the other boxes and to all the other contributors who are working elsewhere in the Julia ecosystem: *thank you* for your efforts, for your refusal to settle for yesterday's state of the art, and for your continuing work towards building the new Julia language!
 
 If you find any egregious errors or omissions that you'd like me to fix, raise an issue on this page's [github](https://github.com/cormullion/cormullion.github.io) and I'll look at, and possibly into, it.
 

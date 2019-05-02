@@ -4,7 +4,7 @@
 
 html {
     font-family: Georgia, Helvetica, sans-serif;
-    font-size  : 15px;
+    font-size  : 16px;
     color: #1c1c1c;
 }
 
@@ -189,7 +189,7 @@ return{c:[{cN:"metaj",b:/^julia>/,r:10,starts:{e:/^(?![ ]{6})/,sL:"julia"},alias
 */
 
 .hljs {
-    font-size: 70%;
+    font-size: 90%;
     font-family: "Menlo";
     line-height: 1.15em;
     border-radius: 10px; }

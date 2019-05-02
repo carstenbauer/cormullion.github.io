@@ -1,6 +1,7 @@
 /*
 small alterations for JuDoc
 */
+
 h1.page.title,
 hr {
     position; relative;
@@ -48,7 +49,7 @@ html {
 }
 
 body {
-    margin: 0
+    margin: 0;
 }
 
 article,
@@ -1325,7 +1326,7 @@ a.pure-button-selected {
 }
 
 .sidebar-brand h3 {
-    font-weight: 400
+    font-weight: 400;
 }
 
 .slideout-menu {
@@ -1366,7 +1367,7 @@ a.pure-button-selected {
 }
 
 #menu {
-    background-color: #1f1f1f
+    background-color: #1f1f1f;
 }
 
 .panel:before {
