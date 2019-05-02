@@ -9,7 +9,13 @@ A good infographic can both confirm and reveal truths about the data. Usually th
 
 Infographics ought to stand alone, and not need accompanying explanations. So here is the PDF (in various colorschemes):
 
-[![infographic ice](/assets/images/infographic/infographic-ice-thumb.png)](/assets/images/infographic/infographic-ColorSchemes.ice.pdf) [![infographic leonardo da vinci](/assets/images/infographic/infographic-leonardo-thumb.png)](/assets/images/infographic/infographic-ColorSchemes.leonardo.pdf) [![infographic auerbach](/assets/images/infographic/infographic-auerbach-thumb.png)]([/assets/images/infographic/infographic-ColorSchemes.auerbach.pdf) [![infographic 50 shades of grey](/assets/images/infographic/infographic-greys-thumb.png)]([/assets/images/infographic/infographic-ColorSchemes.Greys_9.pdf)
+[![infographic ice](/assets/images/infographic/infographic-ice-thumb.png)](/assets/images/infographic/infographic-ColorSchemes.ice.pdf)
+
+[![infographic leonardo da vinci](/assets/images/infographic/infographic-leonardo-thumb.png)](/assets/images/infographic/infographic-ColorSchemes.leonardo.pdf)
+
+[![infographic auerbach](/assets/images/infographic/infographic-auerbach-thumb.png)](/assets/images/infographic/infographic-ColorSchemes.auerbach.pdf)
+
+[![infographic 50 shades of grey](/assets/images/infographic/infographic-greys-thumb.png)](/assets/images/infographic/infographic-ColorSchemes.Greys_9.pdf)
 
 The rest of this post consists merely of footnotes and implementation details!
 
