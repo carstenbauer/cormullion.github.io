@@ -1,0 +1,3 @@
+This folder contains the original Markdown source files. The JuDoc.jl server converts them to HTML and stores them in /pub.
+
+Some of these Markdown files were generated automatically from the Julia source files by Literate.jl. Others were written in a Markdown editor (either Juno or Macdown or something else).

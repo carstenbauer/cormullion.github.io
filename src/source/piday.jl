@@ -1,10 +1,5 @@
-# ---
-# layout: post
-# title: "π day"
-# date: 2019-03-13 00:00:00 +0000
-# categories: blog
-# mathjax: true
-# ---
+# @def title = "π day"
+# @def hascode = true
 
 # >In the UK we have started to celebrate π day (the 3rd month's 14th day) every year, even though we don't use the USA's date formatting convention of `monthnumber` followed by `daynumber`. But we can't really celebrate the 31st of April (31/4) or the 3rd of Quatember (?) (3/14), so we'll happily celebrate π day on 14/3 along with everyone else!
 
@@ -162,7 +157,7 @@ findsubsequence("999999", pidigits(2000)) # => [763]
 
 # I ran out of time on this one, and there are still some problems with the text spacing. The idea is to have the infinite digits of π spiral into some fiery star with some space-y stuff. Probably not the sort of image I should be attempting at all with simple vector-based 2D graphics tools, but it feels like a challenge. Those wispy trails are the same as yesterday's brush strokes, but using custom `setdash()` dashing patterns.
 
-# ![image label](IMAGEFOLDER/pi cosmic spiral-800.png)
+# ![image label](IMAGEFOLDER/pi-cosmic-spiral-800.png)
 
 # ### Day 13
 
@@ -215,27 +210,24 @@ savetrack(track, notes)
 
 # [2019-03-13]
 
-# ![cormullion signing off](http://steampiano.net/cormullionknot.gif?piday){: .center-image}
+# ![cormullion signing off](http://steampiano.net/cormullionknot.gif?piday)
 
-using Literate                                                                 #src
-# preprocess for notebooks                                                     #src
-function setimagefolder(content)                                               #src
-    content = replace(content, "IMAGEFOLDER" => "$IMAGEFOLDER")                #src
-    return content                                                             #src
-end                                                                            #src
+using Literate                                                                              #src
+# preprocess for notebooks                                                                  #src
+function setimagefolder(content)                                                            #src
+    content = replace(content, "IMAGEFOLDER" => "$IMAGEFOLDER")                             #src
+    return content                                                                          #src
+end                                                                                         #src
 
-# for Jupyter notebook, put images in subfolder                                #src
-#IMAGEFOLDER = "images/piday"                                                   #src
+# for Jupyter notebook, put images in subfolder                                             #src
+#IMAGEFOLDER = "images/piday"                                                               #src
 
-#Literate.notebook("source/piday.jl", "notebooks", preprocess = setimagefolder) #src
+#Literate.notebook("source/piday.jl", "notebooks", preprocess = setimagefolder)             #src
 
-# for Markdown/Jekyll notebook, put images in "/images"                        #src
+# for Markdown, put images in "/assets/images/..."                                          #src
 
-IMAGEFOLDER = "/images/piday"                                                  #src
+IMAGEFOLDER = "/assets/images/piday"                                                        #src
 
-Literate.markdown("source/piday.jl", ".", name="_posts/2019-03-13-piday",      #src
- preprocess = setimagefolder,                                                  #src
- codefence = "{% highlight julia %}" => "{% endhighlight julia %}",            #src
- documenter=false)                                                             #src
-
-#src
+Literate.markdown("src/source/piday.jl", ".", name="src/pages/2019-03-13-piday1",           #src
+ preprocess = setimagefolder,                                                               #src
+ documenter=false)                                                                          #src

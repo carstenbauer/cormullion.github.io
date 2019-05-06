@@ -1,16 +1,9 @@
-# ---
-# layout: post
-# title: "Pentachoron"
-# date: 2019-04-03 00:00:00 +0000
-# categories: blog
-# mathjax: true
-# ---
+# @def title = "Pentachoron"
+# @def hascode = true
 
 # > This page contains quite a few animated GIFs. I apologise in advance if your browser or network connection doesn't like them. It's much easier to add a GIF than it is to embed a video into a GitHub pages blog, unfortunately.
 
-# ### Pentachoron
-
-# ![image label](IMAGEFOLDER/header-image.svg){: .center-image}
+# ![image label](IMAGEFOLDER/header-image.svg)
 
 # I encountered the word "pentachoron" recently for the first time, and I thought it had to be something cool. Turns out it is, so I thought I'd have a go at drawing one...
 
@@ -56,7 +49,7 @@ Base.size(pt::Point3D) = (3, )
 
 # (This is just a diagram, it's not really 3D...)
 
-# ![image label](IMAGEFOLDER/cube.svg){: .center-image}
+# ![image label](IMAGEFOLDER/cube.svg)
 
 using Luxor
 
@@ -123,7 +116,7 @@ const K = 4.0
     circle.(convert.(Point, cube) * 300, 5, :fill)
 end 500 500 "images/pentachoron/basic3_to_2.png"
 
-# ![image label](IMAGEFOLDER/basic3_to_2.png){: .center-image}
+# ![image label](IMAGEFOLDER/basic3_to_2.png)
 
 # It's a simple type of perspective projection.
 
@@ -201,7 +194,7 @@ const pentachoronfaces = [
     end
 end 600 250 "images/pentachoron/firstdraw.svg"
 
-# ![image label](IMAGEFOLDER/firstdraw.svg){: .center-image}
+# ![image label](IMAGEFOLDER/firstdraw.svg)
 
 # This isn't very interesting, although I *think* it's correct. To see a more appealing display, let's make it dance...
 
@@ -320,7 +313,7 @@ makemovie(600, 600, "pentachoron-xz.gif", scalefactor=2000)
 
 # This is a rotation in the "parallel to the desk my computer's resting on" XZ plane.
 
-# ![image label](IMAGEFOLDER/pentachoron-xz.gif){: .center-image}
+# ![image label](IMAGEFOLDER/pentachoron-xz.gif)
 
 # It's not a realistic rendering with hidden-surface removal—I wouldn't know how to do that in 3D, let alone 4D. But it does make it slightly easier to follow some of the faces. Something to do one day might be to sort the "faces" to determine which are drawn first, but given the maths involved this is a challenge I'm dubious about tackling...
 
@@ -349,13 +342,13 @@ end
 
 makemovie(800, 800, "pentachoron-xz-yw.gif", scalefactor=2000)
 
-# ![image label](IMAGEFOLDER/pentachoron-xz-yw.gif){: .center-image}
+# ![image label](IMAGEFOLDER/pentachoron-xz-yw.gif)
 
 # These are starting to make me think of kneading machines for making pizza dough.
 
 # You can draw a few different models at once, placing each one in a separate cell:
 
-# ![image label](IMAGEFOLDER/showall-pentachoronmovie.gif){: .center-image}
+# ![image label](IMAGEFOLDER/showall-pentachoronmovie.gif)
 
 # This is showing 2D shadows of 3D shadows of 4D objects. Do these objects exist? I don't know...
 
@@ -431,13 +424,13 @@ end
 
 makemovie(800, 800, "tesseract-xz-yw.gif", scalefactor=2000)
 
-# ![image label](IMAGEFOLDER/tesseract-xz-yw.gif){: .center-image}
+# ![image label](IMAGEFOLDER/tesseract-xz-yw.gif)
 
 # (Just for fun I temporarily switched the color scheme over to the Julia logo colors. You can see the 3D rendering problems more clearly, as well!)
 
 # Here's a composite of four pairs of rotations:
 
-# ![image label](IMAGEFOLDER/showall-tesseractmovie.gif){: .center-image}
+# ![image label](IMAGEFOLDER/showall-tesseractmovie.gif)
 
 # ## Enough is enough
 
@@ -481,28 +474,27 @@ end
 
 makemovie(650, 650, "movie-hexadecachoron.gif", scalefactor=5000)
 
-# ![image label](IMAGEFOLDER/movie-hexadecachoron.gif){: .center-image}
+# ![image label](IMAGEFOLDER/movie-hexadecachoron.gif)
 
 # There's lots more fun to be had (combining two or more different shapes is fun), but I'm worried about your network and my brain cells, so that's enough animated GIFs for today.
 
 # [2018-04-03]
 
-# ![cormullion signing off](http://steampiano.net/cormullionknot.gif?pentachoron){: .center-image}
+# ![cormullion signing off](http://steampiano.net/cormullionknot.gif?pentachoron)
 
-                                                                                         #src
-using Literate                                                                           #src
-# preprocess for notebooks                                                               #src
-function setimagefolder(content)                                                         #src
-    content = replace(content, "IMAGEFOLDER" => "$IMAGEFOLDER")                          #src
-    return content                                                                       #src
-end                                                                                      #src
-# for Jupyter notebook, put images in subfolder                                          #src
-#IMAGEFOLDER = "images/pentachoron"                                                       #src
-#Literate.notebook("source/pentachoron.jl", "notebooks", preprocess = setimagefolder)     #src
-# for Markdown/Jekyll notebook, put images in "/images"                                  #src
-IMAGEFOLDER = "/images/pentachoron"                                                      #src
-Literate.markdown("source/pentachoron.jl", ".", name="_posts/2019-04-03-pentachoron",    #src
- preprocess = setimagefolder,                                                            #src
- codefence = "{% highlight julia %}" => "{% endhighlight julia %}",                      #src
- documenter=false)                                                                       #src
-                                                                                         #src
+                                                                                               #src
+using Literate                                                                                 #src
+# preprocess for notebooks                                                                     #src
+function setimagefolder(content)                                                               #src
+    content = replace(content, "IMAGEFOLDER" => "$IMAGEFOLDER")                                #src
+    return content                                                                             #src
+end                                                                                            #src
+# for Jupyter notebook, put images in subfolder                                                #src
+#IMAGEFOLDER = "? /assets/images/pentachoron"                                                  #src
+#Literate.notebook("source/pentachoron.jl", "notebooks", preprocess = setimagefolder)          #src
+# for Markdown, put images in "/assets/images"                                                 #src
+IMAGEFOLDER = "/assets/images/pentachoron"                                                     #src
+Literate.markdown("src/source/pentachoron.jl", ".", name="src/pages/2019-04-03-pentachoron1",  #src
+ preprocess = setimagefolder,                                                                  #src
+ documenter=false)                                                                             #src
+                                                                                               #src
