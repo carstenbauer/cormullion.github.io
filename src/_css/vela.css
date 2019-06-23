@@ -1353,7 +1353,7 @@ a.pure-button-selected {
     position: relative;
     z-index: 1;
     min-height: 100vh;
-    background-color: #fff
+    background-color: #fefefe
 }
 
 .slideout-open,

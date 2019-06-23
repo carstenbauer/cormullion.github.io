@@ -494,7 +494,7 @@ end                                                                             
 #Literate.notebook("source/pentachoron.jl", "notebooks", preprocess = setimagefolder)          #src
 # for Markdown, put images in "/assets/images"                                                 #src
 IMAGEFOLDER = "/assets/images/pentachoron"                                                     #src
-Literate.markdown("src/source/pentachoron.jl", ".", name="src/pages/2019-04-03-pentachoron1",  #src
+Literate.markdown("src/source/pentachoron.jl", ".", name="src/pages/2019-04-03-pentachoron",  #src
  preprocess = setimagefolder,                                                                  #src
  documenter=false)                                                                             #src
                                                                                                #src

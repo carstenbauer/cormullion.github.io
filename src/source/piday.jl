@@ -228,6 +228,6 @@ end                                                                             
 
 IMAGEFOLDER = "/assets/images/piday"                                                        #src
 
-Literate.markdown("src/source/piday.jl", ".", name="src/pages/2019-03-13-piday1",           #src
+Literate.markdown("src/source/piday.jl", ".", name="src/pages/2019-03-13-piday",           #src
  preprocess = setimagefolder,                                                               #src
  documenter=false)                                                                          #src
