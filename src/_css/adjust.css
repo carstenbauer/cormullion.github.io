@@ -1,6 +1,14 @@
 /* adjustments for JuDoc */
 
-.jd-content code { font-size: 85% !important; }
+.jd-content code {
+        font-size: 80% !important;
+    	font-family: "SFMono-Regular", "Consolas", "Menlo",  "Liberation Mono", "Courier", monospace;
+    }
+
+pre {
+        font-size: 80% !important;
+    	font-family: "SFMono-Regular", "Consolas", "Menlo",  "Liberation Mono", "Courier", monospace;
+    }
 
 .jd-content {
     font-family: Georgia;

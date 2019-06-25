@@ -160,8 +160,8 @@ code,
 kbd,
 pre,
 samp {
-    font-family: "Menlo", monospace, monospace;
-    font-size: 0.9em
+    font-size: 80% !important;
+    font-family: "SFMono-Regular", "Consolas", "Menlo",  "Liberation Mono", "Courier", monospace;
 }
 
 button,
